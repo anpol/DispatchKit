@@ -34,7 +34,143 @@ Usage
 Usage examples are provided in Swift using DispatchKit, compared to Objective-C code
 using the original GCD API.
 
-.. include:: Examples/CheatSheet.rst
+
+Obtaining and Creating Queues
+-----------------------------
+
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+|                                   Swift                                   |                                      Objective-C                                      |
++===========================================================================+=======================================================================================+
+|.. code:: swift                                                            |.. code:: objc                                                                         |
+|                                                                           |                                                                                       |
+|   let mainQueue = Dispatch.mainQueue                                      |   dispatch_queue_t mainQueue =                                                        |
+|                                                                           |       dispatch_get_main_queue();                                                      |
+|                                                                           |                                                                                       |
+|   let globalQueue = Dispatch.globalQueue                                  |   dispatch_queue_t globalQueue =                                                      |
+|                                                                           |       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);                  |
+|                                                                           |                                                                                       |
+|   let backgroundQueue = Dispatch.getGlobalQueue(priority: .Background)    |   dispatch_queue_t backgroundQueue =                                                  |
+|                                                                           |       dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);               |
+|                                                                           |                                                                                       |
+|   let serialQueue = DispatchQueue("com.example.serial-queue")             |   dispatch_queue_t serialQueue =                                                      |
+|                                                                           |       dispatch_queue_create("com.example.serial-queue",                               |
+|                                                                           |                             DISPATCH_QUEUE_SERIAL);                                   |
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+
+
+Using Enumerations
+------------------
+
+As shown an the previous example, the GCD constants are mapped into the Swift enumerations.
+
+For instance, the ``DISPATCH_QUEUE_PRIORITY_*`` constants are mapped as follows:
+
+.. code:: swift
+
+    enum DispatchQueuePriority : dispatch_queue_priority_t {
+        case High = DISPATCH_QUEUE_PRIORITY_HIGH
+        case Default = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        case Low = DISPATCH_QUEUE_PRIORITY_LOW
+        case Background = DISPATCH_QUEUE_PRIORITY_BACKGROUND
+    }
+
+Actual mapping is performed by the Swift compiler behind the scenes. Refer to
+`dk_enums.h <DispatchKit/dk_enums.h>`_ for the corresponding Objective-C code.
+
+
+Queuing Tasks
+-------------
+
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+|                                   Swift                                   |                                      Objective-C                                      |
++===========================================================================+=======================================================================================+
+|.. code:: swift                                                            |.. code:: objc                                                                         |
+|                                                                           |                                                                                       |
+|   serialQueue.sync {                                                      |   dispatch_sync(serialQueue, ^{                                                       |
+|       // sync task                                                        |       // sync task                                                                    |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   let concurrentQueue = DispatchQueue("com.example.concurrent-queue",     |   dispatch_queue_t concurrentQueue =                                                  |
+|                                       attr: .Concurrent)                  |       dispatch_queue_create("com.example.concurrent-queue",                           |
+|                                                                           |                             DISPATCH_QUEUE_CONCURRENT);                               |
+|                                                                           |                                                                                       |
+|   concurrentQueue.apply(42) { i in                                        |   dispatch_apply(42, concurrentQueue , ^(size_t i){                                   |
+|       println("item #\(i)")                                               |       NSLog(@"item #%ld", (long)i);                                                   |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   Dispatch.globalQueue.async {                                            |   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{    |
+|       // async task                                                       |       // async task                                                                   |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   Dispatch.mainQueue.after(.Now + .Seconds(42)) {                         |   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 42 * NSEC_PER_SEC),                 |
+|       // ... code to be executed after a delay of 42 seconds              |                  dispatch_get_main_queue(), ^{                                        |
+|   }                                                                       |       // ... code to be executed after a delay of 42 seconds                          |
+|                                                                           |   });                                                                                 |
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+
+
+Using Time
+----------
+
+The previous example uses time expressions. Other forms of time expressions are also possible:
+
+.. code:: swift
+
+    .Now + .Seconds(3) + .Milliseconds(145) + .Microseconds(926) + .Nanoseconds(535)
+    .WallClock(timespec) + .Days(5) + .Hours(40)
+
+Refer to `DispatchTime.swift <DispatchKit/DispatchTime.swift>`_ for further details.
+
+An additional ``.Forever`` constant is used by default with ``wait()`` method defined
+for groups and semaphores.
+
+
+Waiting on Groups
+-----------------
+
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+|                                   Swift                                   |                                      Objective-C                                      |
++===========================================================================+=======================================================================================+
+|.. code:: swift                                                            |.. code:: objc                                                                         |
+|                                                                           |                                                                                       |
+|   let group = DispatchGroup()                                             |   dispatch_group_t group = dispatch_group_create();                                   |
+|                                                                           |                                                                                       |
+|   globalQueue.async(group) {                                              |   dispatch_group_async(group, globalQueue,^{                                          |
+|       // task 1                                                           |       // task 1                                                                       |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   globalQueue.async(group) {                                              |   dispatch_group_async(group, globalQueue,^{                                          |
+|       // task 2                                                           |       // task 2                                                                       |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   group.notify(globalQueue) {                                             |   dispatch_group_notify(group, globalQueue,^{                                         |
+|       // queued after tasks 1 and 2 were finished                         |       // queued after tasks 1 and 2 were finished                                     |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|   group.wait()                                                            |   dispatch_group_wait(group, DISPATCH_TIME_FOREVER);                                  |
+|                                                                           |                                                                                       |
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+
+
+Waiting on Semaphore
+--------------------
+
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+|                                   Swift                                   |                                      Objective-C                                      |
++===========================================================================+=======================================================================================+
+|.. code:: swift                                                            |.. code:: objc                                                                         |
+|                                                                           |                                                                                       |
+|   let sema4 = DispatchSemaphore(4);                                       |   dispatch_semaphore_t sema4 = dispatch_semaphore_create(4);                          |
+|                                                                           |                                                                                       |
+|   concurrentQueue.async {                                                 |   dispatch_async(concurrentQueue, ^{                                                  |
+|       sema4.wait()                                                        |       dispatch_semaphore_wait(sema4, DISPATCH_TIME_FOREVER);                          |
+|       // access some finite resource                                      |       // access some finite resource                                                  |
+|       sema4.signal()                                                      |       dispatch_semaphore_signal(sema4);                                               |
+|   }                                                                       |   });                                                                                 |
+|                                                                           |                                                                                       |
+|                                                                           |                                                                                       |
+|                                                                           |                                                                                       |
++---------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
 
 
 Dispatch I/O

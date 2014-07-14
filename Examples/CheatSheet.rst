@@ -87,7 +87,7 @@ The previous example uses time expressions. Other forms of time expressions are 
 Refer to `DispatchTime.swift <DispatchKit/DispatchTime.swift>`_ for further details.
 
 An additional ``.Forever`` constant is used by default with ``wait()`` method defined
-for `groups <Waiting on Groups_>`_ and `semaphores <Waiting on Semaphore_>`_.
+for groups and semaphores.
 
 
 Waiting on Groups
