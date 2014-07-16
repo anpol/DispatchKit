@@ -61,6 +61,11 @@ DKDispatchQOSClass
 dk_dispatch_queue_priority_to_qos_class(DKDispatchQueuePriority priority);
 
 
+DISPATCH_CONST DISPATCH_NOTHROW
+dispatch_data_t
+dk_dispatch_data_empty(void);
+
+
 DISPATCH_NONNULL2 DISPATCH_MALLOC DISPATCH_RETURNS_RETAINED DISPATCH_WARN_RESULT DISPATCH_NOTHROW
 dispatch_io_t
 dk_dispatch_io_create_with_path(DKDispatchIOType type,

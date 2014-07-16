@@ -5,9 +5,13 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-struct DispatchData<T: Integer>: DispatchObject {
+struct DispatchData<T: Integer>: DispatchObject, Equatable {
 
     typealias Scale = DispatchDataScale<T>
+
+    static var Empty: DispatchData {
+        return DispatchData(raw: dk_dispatch_data_empty())
+    }
 
     let data: dispatch_data_t!
 
@@ -92,4 +96,8 @@ struct DispatchData<T: Integer>: DispatchObject {
 
 @infix func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T> {
     return DispatchData<T>(raw: dispatch_data_create_concat(a.data, b.data))
+}
+
+@infix func == <T>(a: DispatchData<T>, b: DispatchData<T>) -> Bool {
+    return a.data == b.data
 }

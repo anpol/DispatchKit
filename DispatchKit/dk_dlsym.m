@@ -164,6 +164,11 @@ dk_dispatch_queue_priority_to_qos_class(DKDispatchQueuePriority priority)
     return DKDispatchQOSClassUnspecified;
 }
 
+dispatch_data_t
+dk_dispatch_data_empty(void)
+{
+    return dispatch_data_empty;
+}
 
 dispatch_io_t
 dk_dispatch_io_create_with_path(DKDispatchIOType type,
