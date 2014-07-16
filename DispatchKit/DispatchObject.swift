@@ -29,7 +29,6 @@ protocol DispatchEnterable {
 
 protocol DispatchWaitable {
     func wait(timeout: DispatchTime) -> Int
-    func notify(queue: DispatchQueue, block: dispatch_block_t)
 }
 
 

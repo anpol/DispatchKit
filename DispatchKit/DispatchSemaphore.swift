@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-struct DispatchSemaphore: DispatchObject {
+struct DispatchSemaphore: DispatchObject, DispatchWaitable {
 
     let semaphore: dispatch_semaphore_t!
 
@@ -28,7 +28,12 @@ struct DispatchSemaphore: DispatchObject {
     }
 
 
-    func wait(timeout: DispatchTime = .Forever) -> Int {
+    func wait() -> Int {
+        // default argument is not permitted in protocol method in #swift
+        return wait(.Forever)
+    }
+
+    func wait(timeout: DispatchTime) -> Int {
         return dispatch_semaphore_wait(semaphore, timeout.toRaw())
     }
 
