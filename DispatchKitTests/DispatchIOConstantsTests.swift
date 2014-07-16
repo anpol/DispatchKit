@@ -1,5 +1,5 @@
 //
-//  DispatchIOTests.swift
+//  DispatchIOConstantsTests.swift
 //  DispatchKit
 //
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
@@ -8,7 +8,7 @@
 import DispatchKit
 import XCTest
 
-class DispatchIOTests: XCTestCase {
+class DispatchIOConstantsTests: XCTestCase {
 
     func testIOType() {
         XCTAssertEqual(DISPATCH_IO_STREAM, DispatchIOType.Stream.toRaw())

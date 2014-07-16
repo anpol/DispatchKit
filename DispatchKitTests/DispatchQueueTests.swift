@@ -12,13 +12,6 @@ class DispatchQueueTests: XCTestCase {
 
     var customQueue = DispatchQueue()
 
-    func testQueuePriority() {
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_HIGH, DispatchQueuePriority.High.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_DEFAULT, DispatchQueuePriority.Default.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_LOW, DispatchQueuePriority.Low.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_BACKGROUND, DispatchQueuePriority.Background.toRaw())
-    }
-
     func testLabel() {
         println("mainQueue: \(Dispatch.mainQueue.label)")
         println("globalQueue: \(Dispatch.globalQueue.label)")

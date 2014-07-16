@@ -1,17 +1,16 @@
 //
-//  DispatchSourceTests.swift
+//  DispatchSourceConstantsTests.swift
 //  DispatchKit
 //
-//  Created by Andrei Polushin on 07.07.14.
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
 import DispatchKit
 import XCTest
 
-class DispatchSourceTests: XCTestCase {
+class DispatchSourceConstantsTests: XCTestCase {
 
-    func testDispatchSourceType() {
+    func testSourceType() {
         XCTAssertEqual(COpaquePointer.null(), DispatchSourceType.Unspecified.toOpaque())
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_DATA_ADD, DispatchSourceType.DataAdd.toOpaque())
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_DATA_OR, DispatchSourceType.DataOr.toOpaque())
@@ -26,19 +25,19 @@ class DispatchSourceTests: XCTestCase {
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_MEMORYPRESSURE, DispatchSourceType.MemoryPressure.toOpaque())
     }
 
-    func testDispatchSourceMachSendFlags() {
+    func testSourceMachSendFlags() {
         XCTAssertEqual(0, DispatchSourceMachSendFlags.Unspecified.toRaw())
         XCTAssertEqual(DISPATCH_MACH_SEND_DEAD, DispatchSourceMachSendFlags.Dead.toRaw())
     }
 
-    func testDispatchSourceMemoryPressureFlagsFlags() {
+    func testSourceMemoryPressureFlags() {
         XCTAssertEqual(0, DispatchSourceMemoryPressureFlags.Unspecified.toRaw())
         XCTAssertEqual(DISPATCH_MEMORYPRESSURE_NORMAL, DispatchSourceMemoryPressureFlags.Normal.toRaw())
         XCTAssertEqual(DISPATCH_MEMORYPRESSURE_WARN, DispatchSourceMemoryPressureFlags.Warn.toRaw())
         XCTAssertEqual(DISPATCH_MEMORYPRESSURE_CRITICAL, DispatchSourceMemoryPressureFlags.Critical.toRaw())
     }
 
-    func testDispatchSourceProcFlagsFlags() {
+    func testSourceProcFlags() {
         XCTAssertEqual(0, DispatchSourceProcFlags.Unspecified.toRaw())
         XCTAssertEqual(DISPATCH_PROC_EXIT, DispatchSourceProcFlags.Exit.toRaw())
         XCTAssertEqual(DISPATCH_PROC_FORK, DispatchSourceProcFlags.Fork.toRaw())
@@ -46,7 +45,7 @@ class DispatchSourceTests: XCTestCase {
         XCTAssertEqual(DISPATCH_PROC_SIGNAL, DispatchSourceProcFlags.Signal.toRaw())
     }
 
-    func testDispatchSourceVnodeFlagsFlags() {
+    func testSourceVnodeFlags() {
         XCTAssertEqual(0, DispatchSourceVnodeFlags.Unspecified.toRaw())
         XCTAssertEqual(DISPATCH_VNODE_DELETE, DispatchSourceVnodeFlags.Delete.toRaw())
         XCTAssertEqual(DISPATCH_VNODE_WRITE, DispatchSourceVnodeFlags.Write.toRaw())
@@ -57,7 +56,7 @@ class DispatchSourceTests: XCTestCase {
         XCTAssertEqual(DISPATCH_VNODE_REVOKE, DispatchSourceVnodeFlags.Revoke.toRaw())
     }
 
-    func testDispatchSourceTimerFlagsFlags() {
+    func testSourceTimerFlags() {
         XCTAssertEqual(0, DispatchSourceTimerFlags.Unspecified.toRaw())
         XCTAssertEqual(DISPATCH_TIMER_STRICT, DispatchSourceTimerFlags.Strict.toRaw())
     }
