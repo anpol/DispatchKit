@@ -49,13 +49,13 @@ class DispatchDataTests: XCTestCase {
             (region, buffer) -> Bool in
             switch i {
             case 0xA:
-                XCTAssertEqualObjects(self.a.data, region.data.data)
+                XCTAssert(self.a.data === region.data.data)
                 XCTAssertEqual(0, region.offset)
                 XCTAssertEqual(2, buffer.count)
                 XCTAssertEqual(13, buffer.start[0])
                 XCTAssertEqual(14, buffer.start[1])
             case 0xB:
-                XCTAssertEqualObjects(self.b.data, region.data.data)
+                XCTAssert(self.b.data === region.data.data)
                 XCTAssertEqual(2, region.offset)
                 XCTAssertEqual(3, buffer.count)
                 XCTAssertEqual(15, buffer.start[0])

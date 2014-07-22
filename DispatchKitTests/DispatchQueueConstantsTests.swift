@@ -19,8 +19,8 @@ let QOS_CLASS_UNSPECIFIED_: UInt = 0x00
 class DispatchQueueConstantsTests: XCTestCase {
 
     func testQueueAttr() {
-        XCTAssertEqualObjects(DISPATCH_QUEUE_SERIAL, DispatchQueueAttr.Serial.attr)
-        XCTAssertEqualObjects(DISPATCH_QUEUE_CONCURRENT, DispatchQueueAttr.Concurrent.attr)
+        XCTAssert(DISPATCH_QUEUE_SERIAL === DispatchQueueAttr.Serial.attr)
+        XCTAssert(DISPATCH_QUEUE_CONCURRENT === DispatchQueueAttr.Concurrent.attr)
     }
 
     func testQOSClass() {
