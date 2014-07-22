@@ -5,14 +5,14 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-struct DispatchQueueAttr {
+public struct DispatchQueueAttr {
 
-    static let Serial = DispatchQueueAttr(raw: DISPATCH_QUEUE_SERIAL)
-    static let Concurrent = DispatchQueueAttr(raw: DISPATCH_QUEUE_CONCURRENT)
+    public static let Serial = DispatchQueueAttr(raw: DISPATCH_QUEUE_SERIAL)
+    public static let Concurrent = DispatchQueueAttr(raw: DISPATCH_QUEUE_CONCURRENT)
 
-    let attr: dispatch_queue_attr_t!
+    public let attr: dispatch_queue_attr_t!
 
-    init(raw attr: dispatch_queue_attr_t!) {
+    public init(raw attr: dispatch_queue_attr_t!) {
         self.attr = attr
     }
 

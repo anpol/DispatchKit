@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-enum DispatchTime {
+public enum DispatchTime {
 
     case Forever
 
@@ -15,7 +15,7 @@ enum DispatchTime {
     case WallClock(ConstUnsafePointer<timespec>)
     case WallClockDelta(ConstUnsafePointer<timespec>, Int64)
 
-    func toRaw() -> dispatch_time_t {
+    public func toRaw() -> dispatch_time_t {
         switch self {
         case .Forever:
             return DISPATCH_TIME_FOREVER
@@ -33,7 +33,7 @@ enum DispatchTime {
 }
 
 
-enum DispatchTimeDelta {
+public enum DispatchTimeDelta {
 
     case Nanoseconds(Int64)
     case Microseconds(Int64)
@@ -44,7 +44,7 @@ enum DispatchTimeDelta {
     case Days(Int)
     case Weeks(Int)
 
-    func toRaw() -> UInt64 {
+    public func toRaw() -> UInt64 {
         var t: UInt64
         switch self {
         case let .Nanoseconds(nsec):  t = UInt64(nsec)
@@ -59,14 +59,14 @@ enum DispatchTimeDelta {
         return t
     }
 
-    func toNanoseconds() -> Int64 {
+    public func toNanoseconds() -> Int64 {
         return toRaw().asSigned()
     }
 
 }
 
 
-@infix func +(time: DispatchTime, delta: DispatchTimeDelta) -> DispatchTime {
+@infix public func +(time: DispatchTime, delta: DispatchTimeDelta) -> DispatchTime {
     switch time {
     case .Forever:
         return time
@@ -81,10 +81,10 @@ enum DispatchTimeDelta {
     }
 }
 
-@infix func +(delta: DispatchTimeDelta, time: DispatchTime) -> DispatchTime {
+@infix public func +(delta: DispatchTimeDelta, time: DispatchTime) -> DispatchTime {
     return time + delta
 }
 
-@infix func +(delta1: DispatchTimeDelta, delta2: DispatchTimeDelta) -> DispatchTimeDelta {
+@infix public func +(delta1: DispatchTimeDelta, delta2: DispatchTimeDelta) -> DispatchTimeDelta {
     return .Nanoseconds(delta1.toNanoseconds() + delta2.toNanoseconds())
 }

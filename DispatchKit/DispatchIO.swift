@@ -5,36 +5,36 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-typealias DispatchIOType = DKDispatchIOType
-typealias DispatchIOCloseFlags = DKDispatchIOCloseFlags
-typealias DispatchIOIntervalFlags = DKDispatchIOIntervalFlags
+public typealias DispatchIOType = DKDispatchIOType
+public typealias DispatchIOCloseFlags = DKDispatchIOCloseFlags
+public typealias DispatchIOIntervalFlags = DKDispatchIOIntervalFlags
 
 
-struct DispatchIO: DispatchObject {
+public struct DispatchIO: DispatchObject {
 
-    let io: dispatch_io_t!
+    public let io: dispatch_io_t!
 
-    init(raw io: dispatch_io_t!) {
+    public init(raw io: dispatch_io_t!) {
         self.io = io
     }
 
-    typealias CleanupHandler = (error: CInt) -> Void
+    public typealias CleanupHandler = (error: CInt) -> Void
 
-    init(_ type: DispatchIOType,
+    public init(_ type: DispatchIOType,
          fd: dispatch_fd_t,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
         self.io = dispatch_io_create(type.toRaw(), fd, queue?.queue, cleanup)
     }
 
-    init(_ type: DispatchIOType,
+    public init(_ type: DispatchIOType,
          path: String, oflag: CInt = O_RDONLY, mode: mode_t = 0o644,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
         self.io = dk_dispatch_io_create_with_path(type, path, oflag, mode, queue?.queue, cleanup)
     }
 
-    init(_ type: DispatchIOType,
+    public init(_ type: DispatchIOType,
          io: DispatchIO,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
@@ -42,16 +42,16 @@ struct DispatchIO: DispatchObject {
     }
 
 
-    func getContext() -> DispatchCookie {
+    public func getContext() -> DispatchCookie {
         return dk_dispatch_get_context(io)
     }
 
-    func setContext(context: DispatchCookie) {
+    public func setContext(context: DispatchCookie) {
         dk_dispatch_set_context(io, context)
     }
 
 
-    static func read<T>(fd: dispatch_fd_t, length: Int = Int(SIZE_MAX),
+    public static func read<T>(fd: dispatch_fd_t, length: Int = Int(SIZE_MAX),
                         queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
 
         dispatch_read(fd, length.asUnsigned(), queue.queue) {
@@ -60,7 +60,7 @@ struct DispatchIO: DispatchObject {
         }
     }
 
-    static func write<T>(fd: dispatch_fd_t, data: DispatchData<T>,
+    public static func write<T>(fd: dispatch_fd_t, data: DispatchData<T>,
                          queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
 
         dispatch_write(fd, data.data, queue.queue) {
@@ -70,7 +70,7 @@ struct DispatchIO: DispatchObject {
     }
 
 
-    func read<T>(offset: off_t = 0, length: Int = Int(SIZE_MAX),
+    public func read<T>(offset: off_t = 0, length: Int = Int(SIZE_MAX),
                  queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
 
         dispatch_io_read(io, offset, length.asUnsigned(), queue.queue) {
@@ -79,7 +79,7 @@ struct DispatchIO: DispatchObject {
         }
     }
 
-    func write<T>(offset: off_t = 0, data: DispatchData<T>,
+    public func write<T>(offset: off_t = 0, data: DispatchData<T>,
                   queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
 
         dispatch_io_write(io, offset, data.data, queue.queue) {
@@ -89,27 +89,27 @@ struct DispatchIO: DispatchObject {
     }
 
 
-    func close(_ flags: DispatchIOCloseFlags = .Unspecified) {
+    public func close(_ flags: DispatchIOCloseFlags = .Unspecified) {
         dispatch_io_close(io, flags.toRaw())
     }
 
-    var descriptior: dispatch_fd_t {
+    public var descriptior: dispatch_fd_t {
         return dispatch_io_get_descriptor(io)
     }
 
-    func setHighWater(highWater: Int) {
+    public func setHighWater(highWater: Int) {
         dispatch_io_set_high_water(io, highWater.asUnsigned())
     }
 
-    func setLowWater(lowWater: Int) {
+    public func setLowWater(lowWater: Int) {
         dispatch_io_set_low_water(io, lowWater.asUnsigned())
     }
 
-    func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
+    public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
         dispatch_io_set_interval(io, interval.asUnsigned(), flags.toRaw())
     }
     
-    func barrier(block: dispatch_block_t) {
+    public func barrier(block: dispatch_block_t) {
         dispatch_io_barrier(io, block)
     }
 

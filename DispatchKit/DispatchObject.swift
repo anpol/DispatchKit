@@ -5,34 +5,34 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-@objc protocol DispatchCookie {
+@objc public protocol DispatchCookie {
     // application-defined
 }
 
-protocol DispatchObject {
+public protocol DispatchObject {
     func getContext() -> DispatchCookie
     func setContext(context: DispatchCookie)
 }
 
 
-protocol DispatchResumable {
+public protocol DispatchResumable {
     func suspend()
     func resume()
 }
 
 
-protocol DispatchEnterable {
+public protocol DispatchEnterable {
     func enter()
     func leave()
 }
 
 
-protocol DispatchWaitable {
+public protocol DispatchWaitable {
     func wait(timeout: DispatchTime) -> Int
 }
 
 
-protocol DispatchCancelable {
+public protocol DispatchCancelable {
     func cancel()
     func testCancel() -> Bool
 }
