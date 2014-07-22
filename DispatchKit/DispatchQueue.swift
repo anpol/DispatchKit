@@ -38,12 +38,12 @@ struct DispatchQueue: DispatchObject, DispatchResumable {
     }
 
 
-    var clabel: CString {
+    var clabel: ConstUnsafePointer<CChar> {
         if queue {
             // this function never returns NULL, despite its documentation.
             return dispatch_queue_get_label(queue)
         }
-        return CString(UnsafePointer<CChar>.null())
+        return ConstUnsafePointer<CChar>.null()
     }
 
     var label: String {
@@ -123,7 +123,7 @@ struct DispatchCurrentQueue {
     }
 
 
-    var clabel: CString {
+    var clabel: ConstUnsafePointer<CChar> {
         return dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)
     }
 
