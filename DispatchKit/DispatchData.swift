@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-public struct DispatchData<T: Integer>: DispatchObject, Equatable {
+public struct DispatchData<T: Integer>: DispatchObject {
 
     typealias Scale = DispatchDataScale<T>
 
@@ -96,8 +96,4 @@ public struct DispatchData<T: Integer>: DispatchObject, Equatable {
 
 @infix public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T> {
     return DispatchData<T>(raw: dispatch_data_create_concat(a.data, b.data))
-}
-
-@infix public func == <T>(a: DispatchData<T>, b: DispatchData<T>) -> Bool {
-    return a.data == b.data
 }
