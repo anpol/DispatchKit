@@ -40,7 +40,7 @@ struct DispatchQueue: DispatchObject, DispatchResumable {
 
     var clabel: CString {
         if queue {
-            // this function never returns NULL, despite of its documentation.
+            // this function never returns NULL, despite its documentation.
             return dispatch_queue_get_label(queue)
         }
         return CString(UnsafePointer<CChar>.null())
