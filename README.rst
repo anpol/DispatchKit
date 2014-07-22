@@ -198,6 +198,12 @@ The DispatchKit is designed to be source-compatible with iOS 7 SDK, binary-compa
     More information could be provided after a subsequent release of iOS 8.
 
 
+Feedback is Welcome
+===================
+
+Feel free to ask any questions and provide your suggestions on Twitter, follow `@DispatchKit`_.
+
+
 License 
 =======
 
@@ -209,4 +215,5 @@ The DispatchKit is available under the `MIT License <LICENSE.rst>`_.
 .. _libdispatch: http://libdispatch.macosforge.org
 .. _Swift prerelease: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/
 .. _GCD prerelease: https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/index.html
+.. _@DispatchKit: https://twitter.com/DispatchKit
 
