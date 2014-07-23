@@ -10,34 +10,36 @@ import XCTest
 
 class DispatchQueueTests: XCTestCase {
 
-    var customQueue = DispatchQueue()
+    var foo = DispatchQueue("DispatchQueueTests.foo")
+    var bar = DispatchQueue("DispatchQueueTests.bar")
 
     func testLabel() {
-        println("mainQueue: \(Dispatch.mainQueue.label)")
-        println("globalQueue: \(Dispatch.globalQueue.label)")
-        println("currentQueue: \(Dispatch.currentQueue.label)")
-        println("customQueue: \(customQueue.label)")
-        customQueue.sync {
-            println("customQueue: \(Dispatch.currentQueue.label)")
+        XCTAssertEqual("DispatchQueueTests.foo", foo.label)
+        foo.sync {
+            XCTAssertEqual("DispatchQueueTests.foo", Dispatch.currentQueue.label)
+        }
+        XCTAssertEqual("DispatchQueueTests.bar", bar.label)
+        bar.sync {
+            XCTAssertEqual("DispatchQueueTests.bar", Dispatch.currentQueue.label)
         }
     }
 
     func testIsMainQueue() {
         XCTAssertTrue(Dispatch.mainQueue.isMainQueue)
         XCTAssertFalse(Dispatch.globalQueue.isMainQueue)
-        XCTAssertFalse(customQueue.isMainQueue)
+        XCTAssertFalse(foo.isMainQueue)
     }
 
     func testIsGlobalQueue() {
         XCTAssertFalse(Dispatch.mainQueue.isGlobalQueue)
         XCTAssertTrue(Dispatch.globalQueue.isGlobalQueue)
-        XCTAssertFalse(customQueue.isGlobalQueue)
+        XCTAssertFalse(foo.isGlobalQueue)
     }
 
     func testIsSystemQueue() {
         XCTAssertTrue(Dispatch.mainQueue.isSystemQueue)
         XCTAssertTrue(Dispatch.globalQueue.isSystemQueue)
-        XCTAssertFalse(customQueue.isSystemQueue)
+        XCTAssertFalse(foo.isSystemQueue)
     }
 
     func testSync() {
@@ -48,8 +50,8 @@ class DispatchQueueTests: XCTestCase {
 
     func testAsync() {
         var ok = false
-        customQueue.async { ok = true }
-        customQueue.barrierSync { } // wait
+        foo.async { ok = true }
+        foo.barrierSync { } // wait
         XCTAssertTrue(ok)
     }
 
