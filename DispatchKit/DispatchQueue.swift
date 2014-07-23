@@ -66,9 +66,9 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
 
 
     // NOTE set to nil to reset target queue to default
-    public func setTargetQueue(targetQueue: DispatchQueue) {
+    public func setTargetQueue(targetQueue: DispatchQueue?) {
         assert(!isSystemQueue)
-        dispatch_set_target_queue(queue, targetQueue.queue)
+        dispatch_set_target_queue(queue, targetQueue?.queue)
     }
 
 
