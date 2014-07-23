@@ -18,11 +18,11 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
     }
 
 
-    public func getContext() -> DispatchCookie {
+    public func getContext() -> DispatchCookie? {
         return dk_dispatch_get_context(source)
     }
 
-    public func setContext(context: DispatchCookie) {
+    public func setContext(context: DispatchCookie?) {
         dk_dispatch_set_context(source, context)
     }
 

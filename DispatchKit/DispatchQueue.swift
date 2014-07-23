@@ -20,11 +20,11 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
     }
 
 
-    public func getContext() -> DispatchCookie {
+    public func getContext() -> DispatchCookie? {
         return dk_dispatch_get_context(queue)
     }
 
-    public func setContext(context: DispatchCookie) {
+    public func setContext(context: DispatchCookie?) {
         dk_dispatch_set_context(queue, context)
     }
 

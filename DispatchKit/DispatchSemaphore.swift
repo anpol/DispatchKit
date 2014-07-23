@@ -19,11 +19,11 @@ public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
     }
 
 
-    public func getContext() -> DispatchCookie {
+    public func getContext() -> DispatchCookie? {
         return dk_dispatch_get_context(semaphore)
     }
 
-    public func setContext(context: DispatchCookie) {
+    public func setContext(context: DispatchCookie?) {
         dk_dispatch_set_context(semaphore, context)
     }
 

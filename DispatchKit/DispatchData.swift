@@ -43,11 +43,11 @@ public struct DispatchData<T: Integer>: DispatchObject {
         self.data = dispatch_data_create(buffer, size, queue, destructor)
     }
 
-    public func getContext() -> DispatchCookie {
+    public func getContext() -> DispatchCookie? {
         return dk_dispatch_get_context(data)
     }
 
-    public func setContext(context: DispatchCookie) {
+    public func setContext(context: DispatchCookie?) {
         dk_dispatch_set_context(data, context)
     }
 

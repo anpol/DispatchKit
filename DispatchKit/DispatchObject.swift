@@ -10,8 +10,8 @@
 }
 
 public protocol DispatchObject {
-    func getContext() -> DispatchCookie
-    func setContext(context: DispatchCookie)
+    func getContext() -> DispatchCookie?
+    func setContext(context: DispatchCookie?)
 }
 
 
