@@ -29,11 +29,11 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
     }
 
 
-    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie {
+    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
         return dk_dispatch_queue_get_specific(queue, key)
     }
 
-    public func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie) {
+    public func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?) {
         dk_dispatch_queue_set_specific(queue, key, specific)
     }
 
@@ -118,7 +118,7 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
 
 public struct DispatchCurrentQueue {
 
-    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie {
+    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
         return dk_dispatch_get_specific(key)
     }
 
