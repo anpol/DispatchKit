@@ -10,8 +10,19 @@ import XCTest
 
 class DispatchQueueTests: XCTestCase {
 
-    var foo = DispatchQueue("DispatchQueueTests.foo")
-    var bar = DispatchQueue("DispatchQueueTests.bar")
+    var foo: DispatchQueue!
+    var bar: DispatchQueue!
+
+    override func setUp() {
+        foo = DispatchQueue("DispatchQueueTests.foo")
+        bar = DispatchQueue("DispatchQueueTests.bar")
+        foo.setTargetQueue(bar)
+    }
+
+    override func tearDown() {
+        foo = nil
+        bar = nil
+    }
 
     func testLabel() {
         XCTAssertEqual("DispatchQueueTests.foo", foo.label)
@@ -53,6 +64,36 @@ class DispatchQueueTests: XCTestCase {
         foo.async { ok = true }
         foo.barrierSync { } // wait
         XCTAssertTrue(ok)
+    }
+
+    class TestSpecific: DispatchCookie {
+        let name: String
+        init(_ name: String) {
+            self.name = name
+        }
+    }
+
+    func testQueueSpecific() {
+        struct Keys {
+            static var Foo: Int8 = 0
+            static var Bar: Int8 = 0
+            static var Baz: Int8 = 0
+        }
+
+        foo.setSpecific(&Keys.Foo, TestSpecific("Foo"))
+        bar.setSpecific(&Keys.Bar, TestSpecific("Bar"))
+
+        foo.sync {
+            XCTAssertEqual("Foo", (Dispatch.currentQueue.getSpecific(&Keys.Foo) as TestSpecific).name)
+            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as TestSpecific).name)
+            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
+        }
+
+        bar.sync {
+            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Foo))
+            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as TestSpecific).name)
+            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
+        }
     }
 
 }
