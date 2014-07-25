@@ -17,7 +17,7 @@ dk_dispatch_cookie_release(void *cookie)
 id<DispatchCookie>
 dk_dispatch_get_context(dispatch_object_t object)
 {
-    return (__bridge_transfer id<DispatchCookie>)dispatch_get_context(object);
+    return (__bridge id<DispatchCookie>)dispatch_get_context(object);
 }
 
 void
@@ -30,7 +30,7 @@ dk_dispatch_set_context(dispatch_object_t object, id<DispatchCookie> cookie)
 id<DispatchCookie>
 dk_dispatch_queue_get_specific(dispatch_queue_t queue, const void *key)
 {
-    return (__bridge_transfer id<DispatchCookie>)dispatch_queue_get_specific(queue, key);
+    return (__bridge id<DispatchCookie>)dispatch_queue_get_specific(queue, key);
 }
 
 void
@@ -44,7 +44,7 @@ dk_dispatch_queue_set_specific(dispatch_queue_t queue, const void *key, id<Dispa
 id<DispatchCookie>
 dk_dispatch_get_specific(const void *key)
 {
-    return (__bridge_transfer id<DispatchCookie>)dispatch_get_specific(key);
+    return (__bridge id<DispatchCookie>)dispatch_get_specific(key);
 }
 
 
