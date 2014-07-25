@@ -15,6 +15,13 @@ public protocol DispatchObject {
 }
 
 
+protocol DispatchQueueObject {
+    func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie?
+    func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?)
+    func setTargetQueue(targetQueue: DispatchQueue?)
+}
+
+
 public protocol DispatchResumable {
     func suspend()
     func resume()

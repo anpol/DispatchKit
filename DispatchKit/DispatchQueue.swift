@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-public struct DispatchQueue: DispatchObject, DispatchResumable {
+public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResumable {
 
     public let queue: dispatch_queue_t!
 
@@ -17,24 +17,6 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
          qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int = 0) {
 
         self.queue = dk_dispatch_queue_create_with_qos_class(label, attr.attr, qosClass, relativePriority)
-    }
-
-
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(queue)
-    }
-
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(queue, context)
-    }
-
-
-    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
-        return dk_dispatch_queue_get_specific(queue, key)
-    }
-
-    public func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?) {
-        dk_dispatch_queue_set_specific(queue, key, specific)
     }
 
 
@@ -64,6 +46,23 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
         return label.hasPrefix("com.apple.")
     }
 
+
+    public func getContext() -> DispatchCookie? {
+        return dk_dispatch_get_context(queue)
+    }
+
+    public func setContext(context: DispatchCookie?) {
+        dk_dispatch_set_context(queue, context)
+    }
+
+
+    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
+        return dk_dispatch_queue_get_specific(queue, key)
+    }
+
+    public func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?) {
+        dk_dispatch_queue_set_specific(queue, key, specific)
+    }
 
     // NOTE set to nil to reset target queue to default
     public func setTargetQueue(targetQueue: DispatchQueue?) {
