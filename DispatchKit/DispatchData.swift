@@ -5,7 +5,7 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-public struct DispatchData<T: Integer>: DispatchObject {
+public struct DispatchData<T: IntegerType>: DispatchObject {
 
     typealias Scale = DispatchDataScale<T>
 
@@ -22,13 +22,13 @@ public struct DispatchData<T: Integer>: DispatchObject {
     // Copies the array data and manages it internally.
     public init(_ array: [T]) {
         let size = Scale.toBytes(array.count)
-        self.data = array.withUnsafePointerToElements { (p) in
-            dispatch_data_create(p, size, nil, nil)
+        self.data = array.withUnsafeBufferPointer { (p) in
+            dispatch_data_create(p.baseAddress, size, nil, nil)
         }
     }
 
-    // Consumes a buffer previosly allocated by UnsafePointer<T>.alloc(count)
-    public init(_ buffer: UnsafePointer<T>, _ count: Int, _ queue: dispatch_queue_t! = nil) {
+    // Consumes a buffer previosly allocated by UnsafeMutablePointer<T>.alloc(count)
+    public init(_ buffer: UnsafeMutablePointer<T>, _ count: Int, _ queue: dispatch_queue_t! = nil) {
         let size = Scale.toBytes(count)
         self.data = dispatch_data_create(buffer, size, queue) {
             buffer.dealloc(count)
@@ -36,7 +36,7 @@ public struct DispatchData<T: Integer>: DispatchObject {
     }
 
     // The destructor is responsible to free the buffer.
-    public init(_ buffer: ConstUnsafePointer<T>, _ count: Int,
+    public init(_ buffer: UnsafePointer<T>, _ count: Int,
          _ queue: dispatch_queue_t!, destructor: dispatch_block_t!) {
 
         let size = Scale.toBytes(count)
@@ -71,13 +71,13 @@ public struct DispatchData<T: Integer>: DispatchObject {
     }
 
 
-    public typealias Buffer = (start: ConstUnsafePointer<T>, count: Int)
+    public typealias Buffer = (start: UnsafePointer<T>, count: Int)
 
     public func createMap() -> (owner: dispatch_data_t!, buffer: Buffer) {
-        var buffer: ConstUnsafePointer<Void> = nil
+        var buffer: UnsafePointer<Void> = nil
         var size: UInt = 0
         let owner = dispatch_data_create_map(data, &buffer, &size)
-        return (owner, (ConstUnsafePointer<T>(buffer), Scale.fromBytes(size)))
+        return (owner, (UnsafePointer<T>(buffer), Scale.fromBytes(size)))
     }
 
 
@@ -87,7 +87,7 @@ public struct DispatchData<T: Integer>: DispatchObject {
         return dispatch_data_apply(data) {
             (region, offset, buffer, size) -> Bool in
             applier(region: (DispatchData<T>(raw: region), Scale.fromBytes(offset)),
-                    buffer: (ConstUnsafePointer<T>(buffer), Scale.fromBytes(size)))
+                    buffer: (UnsafePointer<T>(buffer), Scale.fromBytes(size)))
         }
     }
 

@@ -16,8 +16,8 @@ public protocol DispatchObject {
 
 
 protocol DispatchQueueObject {
-    func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie?
-    func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?)
+    func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie?
+    func setSpecific(key: UnsafePointer<Void>, _ specific: DispatchCookie?)
     func setTargetQueue(targetQueue: DispatchQueue?)
 }
 

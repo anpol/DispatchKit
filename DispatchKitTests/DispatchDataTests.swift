@@ -20,7 +20,7 @@ class DispatchDataTests: XCTestCase {
         super.setUp()
         a = DispatchData([10, 11, 12, 13, 14])
 
-        let bp = UnsafePointer<Int>.alloc(6)
+        let bp = UnsafeMutablePointer<Int>.alloc(6)
         bp.initializeFrom([15, 16, 17, 18, 19, 20])
         b = DispatchData(bp, 6)
 

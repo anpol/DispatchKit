@@ -12,8 +12,8 @@ public enum DispatchTime {
     case Now
     case NowDelta(Int64)
 
-    case WallClock(ConstUnsafePointer<timespec>)
-    case WallClockDelta(ConstUnsafePointer<timespec>, Int64)
+    case WallClock(UnsafePointer<timespec>)
+    case WallClockDelta(UnsafePointer<timespec>, Int64)
 
     public func toRaw() -> dispatch_time_t {
         switch self {

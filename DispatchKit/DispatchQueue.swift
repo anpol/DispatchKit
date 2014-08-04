@@ -20,12 +20,12 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
 
-    public var clabel: ConstUnsafePointer<CChar> {
+    public var clabel: UnsafePointer<CChar> {
         if queue {
             // this function never returns NULL, despite its documentation.
             return dispatch_queue_get_label(queue)
         }
-        return ConstUnsafePointer<CChar>.null()
+        return UnsafePointer<CChar>.null()
     }
 
     public var label: String {
@@ -56,11 +56,11 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
 
-    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
+    public func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie? {
         return dk_dispatch_queue_get_specific(queue, key)
     }
 
-    public func setSpecific(key: ConstUnsafePointer<Void>, _ specific: DispatchCookie?) {
+    public func setSpecific(key: UnsafePointer<Void>, _ specific: DispatchCookie?) {
         dk_dispatch_queue_set_specific(queue, key, specific)
     }
 
@@ -117,12 +117,12 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
 
 public struct DispatchCurrentQueue {
 
-    public func getSpecific(key: ConstUnsafePointer<Void>) -> DispatchCookie? {
+    public func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie? {
         return dk_dispatch_get_specific(key)
     }
 
 
-    public var clabel: ConstUnsafePointer<CChar> {
+    public var clabel: UnsafePointer<CChar> {
         return dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)
     }
 
