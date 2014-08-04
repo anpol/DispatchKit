@@ -66,7 +66,7 @@ public enum DispatchTimeDelta {
 }
 
 
-@infix public func +(time: DispatchTime, delta: DispatchTimeDelta) -> DispatchTime {
+public func +(time: DispatchTime, delta: DispatchTimeDelta) -> DispatchTime {
     switch time {
     case .Forever:
         return time
@@ -81,10 +81,10 @@ public enum DispatchTimeDelta {
     }
 }
 
-@infix public func +(delta: DispatchTimeDelta, time: DispatchTime) -> DispatchTime {
+public func +(delta: DispatchTimeDelta, time: DispatchTime) -> DispatchTime {
     return time + delta
 }
 
-@infix public func +(delta1: DispatchTimeDelta, delta2: DispatchTimeDelta) -> DispatchTimeDelta {
+public func +(delta1: DispatchTimeDelta, delta2: DispatchTimeDelta) -> DispatchTimeDelta {
     return .Nanoseconds(delta1.toNanoseconds() + delta2.toNanoseconds())
 }

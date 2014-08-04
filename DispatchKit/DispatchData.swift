@@ -94,6 +94,6 @@ public struct DispatchData<T: Integer>: DispatchObject {
 }
 
 
-@infix public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T> {
+public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T> {
     return DispatchData<T>(raw: dispatch_data_create_concat(a.data, b.data))
 }
