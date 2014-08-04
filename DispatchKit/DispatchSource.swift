@@ -59,7 +59,7 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
 
 
     public var handle: Int {
-        return dispatch_source_get_handle(source).asSigned()
+        return Int(bitPattern: dispatch_source_get_handle(source))
     }
 
     public var mask: UInt {
@@ -67,11 +67,11 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
     }
 
     public var data: Int {
-        return dispatch_source_get_data(source).asSigned()
+        return Int(bitPattern: dispatch_source_get_data(source))
     }
 
     public func mergeData(value: Int) {
-        dispatch_source_merge_data(source, value.asUnsigned())
+        dispatch_source_merge_data(source, UInt(value))
     }
 
     public func setTimer(start: DispatchTime, interval: DispatchTimeDelta, leeway: DispatchTimeDelta) {

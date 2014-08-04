@@ -54,7 +54,7 @@ public struct DispatchIO: DispatchObject {
     public static func read<T>(fd: dispatch_fd_t, length: Int = Int(SIZE_MAX),
                         queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
 
-        dispatch_read(fd, length.asUnsigned(), queue.queue) {
+        dispatch_read(fd, UInt(length), queue.queue) {
             (data, error) in
             handler(DispatchData<T>(raw: data), Int(error))
         }
@@ -73,7 +73,7 @@ public struct DispatchIO: DispatchObject {
     public func read<T>(offset: off_t = 0, length: Int = Int(SIZE_MAX),
                  queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
 
-        dispatch_io_read(io, offset, length.asUnsigned(), queue.queue) {
+        dispatch_io_read(io, offset, UInt(length), queue.queue) {
             (done, data, error) in
             handler(done, DispatchData<T>(raw: data), Int(error))
         }
@@ -98,15 +98,15 @@ public struct DispatchIO: DispatchObject {
     }
 
     public func setHighWater(highWater: Int) {
-        dispatch_io_set_high_water(io, highWater.asUnsigned())
+        dispatch_io_set_high_water(io, UInt(highWater))
     }
 
     public func setLowWater(lowWater: Int) {
-        dispatch_io_set_low_water(io, lowWater.asUnsigned())
+        dispatch_io_set_low_water(io, UInt(lowWater))
     }
 
     public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
-        dispatch_io_set_interval(io, interval.asUnsigned(), flags.toRaw())
+        dispatch_io_set_interval(io, UInt64(interval), flags.toRaw())
     }
     
     public func barrier(block: dispatch_block_t) {

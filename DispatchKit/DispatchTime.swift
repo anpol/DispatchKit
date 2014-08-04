@@ -60,7 +60,7 @@ public enum DispatchTimeDelta {
     }
 
     public func toNanoseconds() -> Int64 {
-        return toRaw().asSigned()
+        return Int64(toRaw())
     }
 
 }

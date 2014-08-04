@@ -20,15 +20,15 @@ public struct Dispatch {
     }
 
     public static func getGlobalQueue(#priority: DispatchQueuePriority, flags: Int = 0) -> DispatchQueue {
-        return DispatchQueue(raw: dispatch_get_global_queue(priority.toRaw(), flags.asUnsigned()))
+        return DispatchQueue(raw: dispatch_get_global_queue(priority.toRaw(), UInt(flags)))
     }
 
     public static func getGlobalQueue(#qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
         let identifier = dk_dispatch_has_qos_class() ?
-            qosClass.toRaw().asSigned() :
+            Int(qosClass.toRaw()) :
             qosClass.toPriority().toRaw()
 
-        return DispatchQueue(raw: dispatch_get_global_queue(identifier, flags.asUnsigned()))
+        return DispatchQueue(raw: dispatch_get_global_queue(identifier, UInt(flags)))
     }
 
 }

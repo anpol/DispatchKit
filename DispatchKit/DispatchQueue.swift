@@ -90,7 +90,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
     public func apply(iterations: Int, block: (Int) -> Void) {
-        dispatch_apply(iterations.asUnsigned(), queue, { block($0.asSigned()) })
+        dispatch_apply(UInt(iterations), queue, { block(Int($0)) })
     }
 
 
