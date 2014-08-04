@@ -30,7 +30,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
 
     public var label: String {
         let (s, _) = String.fromCStringRepairingIllFormedUTF8(clabel)
-        return s ? s! : "(null)"
+        return s ?? "(null)"
     }
 
 
@@ -128,7 +128,7 @@ public struct DispatchCurrentQueue {
 
     public var label: String {
         let (s, _) = String.fromCStringRepairingIllFormedUTF8(clabel)
-        return s ? s! : "(null)"
+        return s ?? "(null)"
     }
 
 }
