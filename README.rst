@@ -201,7 +201,7 @@ The DispatchKit is designed to be source-compatible with iOS 7 SDK, binary-compa
 Feedback is Welcome
 ===================
 
-Feel free to ask any questions and provide your suggestions on Twitter, follow `@DispatchKit`_.
+Follow `@DispatchKit`_ on Twitter. Feel free to ask questions and provide your suggestions.
 
 
 License 
