@@ -21,7 +21,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
 
 
     public var clabel: UnsafePointer<CChar> {
-        if queue {
+        if queue != nil {
             // this function never returns NULL, despite its documentation.
             return dispatch_queue_get_label(queue)
         }
