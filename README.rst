@@ -12,9 +12,6 @@ Goal
 The project aims to provide an idiomatic Swift language wrapper for the
 `Grand Central Dispatch`_ Framework, also known as GCD, or libdispatch_ library.
 
-    Current implementation is based on publicly available `Swift prerelease`_ and
-    `GCD prerelease`_ documentation. The implementation is subject to change.
-
 If you are familiar with the C-based GCD API, you can continually apply your knowledge
 when writing Swift code, because the DispatchKit API closely matches the original API.
 
@@ -195,8 +192,6 @@ Compatibility
 
 The DispatchKit is designed to be source-compatible with iOS 7 SDK, binary-compatible with iOS 7 platform.
 
-    More information could be provided after a subsequent release of iOS 8.
-
 
 Feedback is Welcome
 ===================
@@ -213,7 +208,5 @@ The DispatchKit is available under the `MIT License <LICENSE.rst>`_.
 .. References:
 .. _Grand Central Dispatch: https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/
 .. _libdispatch: http://libdispatch.macosforge.org
-.. _Swift prerelease: https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/
-.. _GCD prerelease: https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/index.html
 .. _@DispatchKit: https://twitter.com/DispatchKit
 
