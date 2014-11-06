@@ -75,7 +75,7 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
     }
 
     public func setTimer(start: DispatchTime, interval: DispatchTimeDelta, leeway: DispatchTimeDelta) {
-        dispatch_source_set_timer(source, start.toRaw(), interval.toRaw(), leeway.toRaw())
+        dispatch_source_set_timer(source, start.rawValue, interval.rawValue, leeway.rawValue)
     }
 
 }

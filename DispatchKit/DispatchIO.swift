@@ -24,7 +24,7 @@ public struct DispatchIO: DispatchObject {
          fd: dispatch_fd_t,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
-        self.io = dispatch_io_create(type.toRaw(), fd, queue?.queue, cleanup)
+        self.io = dispatch_io_create(type.rawValue, fd, queue?.queue, cleanup)
     }
 
     public init(_ type: DispatchIOType,
@@ -38,7 +38,7 @@ public struct DispatchIO: DispatchObject {
          io: DispatchIO,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
-        self.io = dispatch_io_create_with_io(type.toRaw(), io.io, queue?.queue, cleanup)
+        self.io = dispatch_io_create_with_io(type.rawValue, io.io, queue?.queue, cleanup)
     }
 
 
@@ -90,7 +90,7 @@ public struct DispatchIO: DispatchObject {
 
 
     public func close(_ flags: DispatchIOCloseFlags = .Unspecified) {
-        dispatch_io_close(io, flags.toRaw())
+        dispatch_io_close(io, flags.rawValue)
     }
 
     public var descriptior: dispatch_fd_t {
@@ -106,7 +106,7 @@ public struct DispatchIO: DispatchObject {
     }
 
     public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
-        dispatch_io_set_interval(io, UInt64(interval), flags.toRaw())
+        dispatch_io_set_interval(io, UInt64(interval), flags.rawValue)
     }
     
     public func barrier(block: dispatch_block_t) {

@@ -15,7 +15,7 @@ public enum DispatchTime {
     case WallClock(UnsafePointer<timespec>)
     case WallClockDelta(UnsafePointer<timespec>, Int64)
 
-    public func toRaw() -> dispatch_time_t {
+    public var rawValue: dispatch_time_t {
         switch self {
         case .Forever:
             return DISPATCH_TIME_FOREVER
@@ -44,7 +44,7 @@ public enum DispatchTimeDelta {
     case Days(Int)
     case Weeks(Int)
 
-    public func toRaw() -> UInt64 {
+    public var rawValue: UInt64 {
         var t: UInt64
         switch self {
         case let .Nanoseconds(nsec):  t = UInt64(nsec)
@@ -60,7 +60,7 @@ public enum DispatchTimeDelta {
     }
 
     public func toNanoseconds() -> Int64 {
-        return Int64(toRaw())
+        return Int64(rawValue)
     }
 
 }

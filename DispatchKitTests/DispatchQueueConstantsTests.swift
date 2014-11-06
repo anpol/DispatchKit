@@ -24,12 +24,12 @@ class DispatchQueueConstantsTests: XCTestCase {
     }
 
     func testQOSClass() {
-        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.toRaw())
-        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.toRaw())
-        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.toRaw())
-        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.toRaw())
-        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.toRaw())
-        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.toRaw())
+        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.rawValue)
+        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.rawValue)
+        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.rawValue)
+        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.rawValue)
     }
 
     func testQOSClassToPriority() {
@@ -49,10 +49,10 @@ class DispatchQueueConstantsTests: XCTestCase {
     }
 
     func testQueuePriority() {
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_HIGH, DispatchQueuePriority.High.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_DEFAULT, DispatchQueuePriority.Default.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_LOW, DispatchQueuePriority.Low.toRaw())
-        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_BACKGROUND, DispatchQueuePriority.Background.toRaw())
+        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_HIGH, DispatchQueuePriority.High.rawValue)
+        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_DEFAULT, DispatchQueuePriority.Default.rawValue)
+        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_LOW, DispatchQueuePriority.Low.rawValue)
+        XCTAssertEqual(DISPATCH_QUEUE_PRIORITY_BACKGROUND, DispatchQueuePriority.Background.rawValue)
     }
 
 }
