@@ -26,39 +26,39 @@ class DispatchSourceConstantsTests: XCTestCase {
     }
 
     func testSourceMachSendFlags() {
-        XCTAssertEqual(0, DispatchSourceMachSendFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_MACH_SEND_DEAD, DispatchSourceMachSendFlags.Dead.toRaw())
+        XCTAssertEqual(0, Int(DispatchSourceMachSendFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_MACH_SEND_DEAD, DispatchSourceMachSendFlags.Dead.rawValue)
     }
 
     func testSourceMemoryPressureFlags() {
-        XCTAssertEqual(0, DispatchSourceMemoryPressureFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_NORMAL, DispatchSourceMemoryPressureFlags.Normal.toRaw())
-        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_WARN, DispatchSourceMemoryPressureFlags.Warn.toRaw())
-        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_CRITICAL, DispatchSourceMemoryPressureFlags.Critical.toRaw())
+        XCTAssertEqual(0, Int(DispatchSourceMemoryPressureFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_NORMAL, DispatchSourceMemoryPressureFlags.Normal.rawValue)
+        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_WARN, DispatchSourceMemoryPressureFlags.Warn.rawValue)
+        XCTAssertEqual(DISPATCH_MEMORYPRESSURE_CRITICAL, DispatchSourceMemoryPressureFlags.Critical.rawValue)
     }
 
     func testSourceProcFlags() {
-        XCTAssertEqual(0, DispatchSourceProcFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_PROC_EXIT, DispatchSourceProcFlags.Exit.toRaw())
-        XCTAssertEqual(DISPATCH_PROC_FORK, DispatchSourceProcFlags.Fork.toRaw())
-        XCTAssertEqual(DISPATCH_PROC_EXEC, DispatchSourceProcFlags.Exec.toRaw())
-        XCTAssertEqual(DISPATCH_PROC_SIGNAL, DispatchSourceProcFlags.Signal.toRaw())
+        XCTAssertEqual(0, Int(DispatchSourceProcFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_PROC_EXIT, DispatchSourceProcFlags.Exit.rawValue)
+        XCTAssertEqual(DISPATCH_PROC_FORK, DispatchSourceProcFlags.Fork.rawValue)
+        XCTAssertEqual(DISPATCH_PROC_EXEC, DispatchSourceProcFlags.Exec.rawValue)
+        XCTAssertEqual(DISPATCH_PROC_SIGNAL, DispatchSourceProcFlags.Signal.rawValue)
     }
 
     func testSourceVnodeFlags() {
-        XCTAssertEqual(0, DispatchSourceVnodeFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_DELETE, DispatchSourceVnodeFlags.Delete.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_WRITE, DispatchSourceVnodeFlags.Write.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_EXTEND, DispatchSourceVnodeFlags.Extend.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_ATTRIB, DispatchSourceVnodeFlags.Attrib.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_LINK, DispatchSourceVnodeFlags.Link.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_RENAME, DispatchSourceVnodeFlags.Rename.toRaw())
-        XCTAssertEqual(DISPATCH_VNODE_REVOKE, DispatchSourceVnodeFlags.Revoke.toRaw())
+        XCTAssertEqual(0, Int(DispatchSourceVnodeFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_VNODE_DELETE, DispatchSourceVnodeFlags.Delete.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_WRITE, DispatchSourceVnodeFlags.Write.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_EXTEND, DispatchSourceVnodeFlags.Extend.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_ATTRIB, DispatchSourceVnodeFlags.Attrib.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_LINK, DispatchSourceVnodeFlags.Link.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_RENAME, DispatchSourceVnodeFlags.Rename.rawValue)
+        XCTAssertEqual(DISPATCH_VNODE_REVOKE, DispatchSourceVnodeFlags.Revoke.rawValue)
     }
 
     func testSourceTimerFlags() {
-        XCTAssertEqual(0, DispatchSourceTimerFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_TIMER_STRICT, DispatchSourceTimerFlags.Strict.toRaw())
+        XCTAssertEqual(0, Int(DispatchSourceTimerFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_TIMER_STRICT, DispatchSourceTimerFlags.Strict.rawValue)
     }
 
 }

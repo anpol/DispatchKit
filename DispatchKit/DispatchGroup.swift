@@ -42,7 +42,7 @@ public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable
     }
 
     public func wait(timeout: DispatchTime) -> Int {
-        return dispatch_group_wait(group, timeout.toRaw())
+        return dispatch_group_wait(group, timeout.rawValue)
     }
 
     public func notify(queue: DispatchQueue, block: dispatch_block_t) {

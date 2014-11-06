@@ -34,7 +34,7 @@ public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
     }
 
     public func wait(timeout: DispatchTime) -> Int {
-        return dispatch_semaphore_wait(semaphore, timeout.toRaw())
+        return dispatch_semaphore_wait(semaphore, timeout.rawValue)
     }
 
     public func signal() -> Int {

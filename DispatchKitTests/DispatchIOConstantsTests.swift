@@ -11,18 +11,18 @@ import XCTest
 class DispatchIOConstantsTests: XCTestCase {
 
     func testIOType() {
-        XCTAssertEqual(DISPATCH_IO_STREAM, DispatchIOType.Stream.toRaw())
-        XCTAssertEqual(DISPATCH_IO_RANDOM, DispatchIOType.Random.toRaw())
+        XCTAssertEqual(DISPATCH_IO_STREAM, DispatchIOType.Stream.rawValue)
+        XCTAssertEqual(DISPATCH_IO_RANDOM, DispatchIOType.Random.rawValue)
     }
 
     func testIOCloseFlag() {
-        XCTAssertEqual(0, DispatchIOCloseFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_IO_STOP, DispatchIOCloseFlags.Stop.toRaw())
+        XCTAssertEqual(0, Int(DispatchIOCloseFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_IO_STOP, DispatchIOCloseFlags.Stop.rawValue)
     }
 
     func testIOIntervalFlag() {
-        XCTAssertEqual(0, DispatchIOIntervalFlags.Unspecified.toRaw())
-        XCTAssertEqual(DISPATCH_IO_STRICT_INTERVAL, DispatchIOIntervalFlags.Strict.toRaw())
+        XCTAssertEqual(0, Int(DispatchIOIntervalFlags.Unspecified.rawValue))
+        XCTAssertEqual(DISPATCH_IO_STRICT_INTERVAL, DispatchIOIntervalFlags.Strict.rawValue)
     }
 
 }

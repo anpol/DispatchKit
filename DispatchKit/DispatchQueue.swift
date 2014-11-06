@@ -109,7 +109,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
 
 
     public func after(when: DispatchTime, block: dispatch_block_t) {
-        dispatch_after(when.toRaw(), queue, block)
+        dispatch_after(when.rawValue, queue, block)
     }
 
 }
