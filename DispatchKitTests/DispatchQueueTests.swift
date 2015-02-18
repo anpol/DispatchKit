@@ -84,14 +84,14 @@ class DispatchQueueTests: XCTestCase {
         bar.setSpecific(&Keys.Bar, TestSpecific("Bar"))
 
         foo.sync {
-            XCTAssertEqual("Foo", (Dispatch.currentQueue.getSpecific(&Keys.Foo) as TestSpecific).name)
-            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as TestSpecific).name)
+            XCTAssertEqual("Foo", (Dispatch.currentQueue.getSpecific(&Keys.Foo) as! TestSpecific).name)
+            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as! TestSpecific).name)
             XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
         }
 
         bar.sync {
             XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Foo))
-            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as TestSpecific).name)
+            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as! TestSpecific).name)
             XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
         }
     }

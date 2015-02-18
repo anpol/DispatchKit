@@ -15,7 +15,7 @@ id<DispatchCookie>
 dk_dispatch_get_context(dispatch_object_t object);
 
 
-DISPATCH_NONNULL1 DISPATCH_NONNULL2 DISPATCH_NOTHROW
+DISPATCH_NONNULL1 DISPATCH_NOTHROW
 void
 dk_dispatch_set_context(dispatch_object_t object, id<DispatchCookie> cookie);
 
