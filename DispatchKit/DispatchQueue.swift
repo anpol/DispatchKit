@@ -25,7 +25,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
             // this function never returns NULL, despite its documentation.
             return dispatch_queue_get_label(queue)
         }
-        return UnsafePointer<CChar>.null()
+        return nil
     }
 
     public var label: String {
