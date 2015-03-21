@@ -75,7 +75,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     public typealias Region = (data: DispatchData, offset: Int)
 
     public func copyRegion(location: Int) -> Region {
-        var offset: UInt = 0
+        var offset: Int = 0
         let region = dispatch_data_copy_region(data, Scale.toBytes(location), &offset)
         return (DispatchData(raw: region), Scale.fromBytes(offset))
     }
@@ -85,7 +85,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
 
     public func createMap() -> (owner: dispatch_data_t!, buffer: Buffer) {
         var buffer: UnsafePointer<Void> = nil
-        var size: UInt = 0
+        var size: Int = 0
         let owner = dispatch_data_create_map(data, &buffer, &size)
         return (owner, (UnsafePointer<T>(buffer), Scale.fromBytes(size)))
     }

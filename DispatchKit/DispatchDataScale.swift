@@ -7,14 +7,12 @@
 
 struct DispatchDataScale<T> {
 
-    static func toBytes(n: Int) -> UInt {
-        let sizeofT = UInt(bitPattern: sizeof(T))
-        return UInt(n) * sizeofT
+    static func toBytes(n: Int) -> Int {
+        return n * sizeof(T)
     }
 
-    static func fromBytes(i: UInt) -> Int {
-        let sizeofT = UInt(bitPattern: sizeof(T))
-        let n = Int(bitPattern: i / sizeofT)
+    static func fromBytes(i: Int) -> Int {
+        let n = i / sizeof(T)
         assert(i == toBytes(n), "unscaling is not reversible")
         return n
     }

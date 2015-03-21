@@ -51,10 +51,10 @@ public struct DispatchIO: DispatchObject {
     }
 
 
-    public static func read<T>(fd: dispatch_fd_t, length: Int = Int(SIZE_MAX),
+    public static func read<T>(fd: dispatch_fd_t, length: Int = Int.max,
                         queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
 
-        dispatch_read(fd, UInt(length), queue.queue) {
+        dispatch_read(fd, length, queue.queue) {
             (data, error) in
             handler(DispatchData<T>(raw: data), Int(error))
         }
@@ -70,10 +70,10 @@ public struct DispatchIO: DispatchObject {
     }
 
 
-    public func read<T>(offset: off_t = 0, length: Int = Int(SIZE_MAX),
+    public func read<T>(offset: off_t = 0, length: Int = Int.max,
                  queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
 
-        dispatch_io_read(io, offset, UInt(length), queue.queue) {
+        dispatch_io_read(io, offset, length, queue.queue) {
             (done, data, error) in
             handler(done, DispatchData<T>(raw: data), Int(error))
         }
@@ -98,11 +98,11 @@ public struct DispatchIO: DispatchObject {
     }
 
     public func setHighWater(highWater: Int) {
-        dispatch_io_set_high_water(io, UInt(highWater))
+        dispatch_io_set_high_water(io, highWater)
     }
 
     public func setLowWater(lowWater: Int) {
-        dispatch_io_set_low_water(io, UInt(lowWater))
+        dispatch_io_set_low_water(io, lowWater)
     }
 
     public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
