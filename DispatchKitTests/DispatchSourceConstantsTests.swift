@@ -11,7 +11,7 @@ import XCTest
 class DispatchSourceConstantsTests: XCTestCase {
 
     func testSourceType() {
-        XCTAssertEqual(COpaquePointer.null(), DispatchSourceType.Unspecified.toOpaque())
+        XCTAssertEqual(nil, DispatchSourceType.Unspecified.toOpaque())
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_DATA_ADD, DispatchSourceType.DataAdd.toOpaque())
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_DATA_OR, DispatchSourceType.DataOr.toOpaque())
         XCTAssertEqual(DISPATCH_SOURCE_TYPE_MACH_RECV, DispatchSourceType.MachRecv.toOpaque())

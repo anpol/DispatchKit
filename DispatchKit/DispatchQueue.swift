@@ -90,7 +90,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
     public func apply(iterations: Int, block: (Int) -> Void) {
-        dispatch_apply(UInt(iterations), queue, { block(Int($0)) })
+        dispatch_apply(iterations, queue, { block($0) })
     }
 
 
