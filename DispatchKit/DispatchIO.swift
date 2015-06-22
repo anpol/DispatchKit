@@ -89,7 +89,7 @@ public struct DispatchIO: DispatchObject {
     }
 
 
-    public func close(_ flags: DispatchIOCloseFlags = .Unspecified) {
+    public func close(flags: DispatchIOCloseFlags = .Unspecified) {
         dispatch_io_close(io, flags.rawValue)
     }
 

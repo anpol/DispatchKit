@@ -40,7 +40,7 @@ func cheatQueues() {
 
 
     concurrentQueue.apply(42) { i in
-        println("item #\(i)")
+        print("item #\(i)")
     }
     
     Dispatch.globalQueue.async {

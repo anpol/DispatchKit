@@ -19,11 +19,11 @@ public struct Dispatch {
         return getGlobalQueue(priority: .Default)
     }
 
-    public static func getGlobalQueue(#priority: DispatchQueuePriority, flags: Int = 0) -> DispatchQueue {
+    public static func getGlobalQueue(priority priority: DispatchQueuePriority, flags: Int = 0) -> DispatchQueue {
         return DispatchQueue(raw: dispatch_get_global_queue(priority.rawValue, UInt(flags)))
     }
 
-    public static func getGlobalQueue(#qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
+    public static func getGlobalQueue(qosClass qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
         let identifier = dk_dispatch_has_qos_class() ?
             Int(qosClass.rawValue) :
             qosClass.toPriority().rawValue
