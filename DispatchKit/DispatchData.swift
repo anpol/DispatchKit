@@ -22,7 +22,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     /**
      * Copies the array's data and manages it internally.
      *
-     * :param: array The array to be copied.
+     * - parameter array: The array to be copied.
      */
     public init(_ array: [T]) {
         let size = Scale.toBytes(array.count)
@@ -34,9 +34,9 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     /**
      * Consumes a buffer previosly allocated by `UnsafeMutablePointer.alloc`_.
      *
-     * :param: buffer
-     * :param: count
-     * :param: queue A queue on which to call `UnsafeMutablePointer.dealloc`_ for the buffer.
+     * - parameter buffer:
+     * - parameter count:
+     * - parameter queue: A queue on which to call `UnsafeMutablePointer.dealloc`_ for the buffer.
      */
     public init(_ buffer: UnsafeMutablePointer<T>, _ count: Int, _ queue: dispatch_queue_t! = nil) {
         let size = Scale.toBytes(count)
