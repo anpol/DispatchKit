@@ -60,7 +60,7 @@ Queuing Tasks
 |                                                                           |                             DISPATCH_QUEUE_CONCURRENT);                               |
 |                                                                           |                                                                                       |
 |   concurrentQueue.apply(42) { i in                                        |   dispatch_apply(42, concurrentQueue , ^(size_t i){                                   |
-|       println("item #\(i)")                                               |       NSLog(@"item #%ld", (long)i);                                                   |
+|       print("item #\(i)")                                                 |       NSLog(@"item #%ld", (long)i);                                                   |
 |   }                                                                       |   });                                                                                 |
 |                                                                           |                                                                                       |
 |   Dispatch.globalQueue.async {                                            |   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{    |
