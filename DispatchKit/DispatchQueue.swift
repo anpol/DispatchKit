@@ -99,7 +99,7 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
     public func async(group: DispatchGroup, block: dispatch_block_t) {
-        dispatch_group_async(queue, group.group, block)
+        dispatch_group_async(group.group, queue, block)
     }
 
     public func barrierAsync(block: dispatch_block_t) {
