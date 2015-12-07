@@ -5,6 +5,8 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public struct Dispatch {
 
     public static var currentQueue: DispatchCurrentQueue {
@@ -12,7 +14,7 @@ public struct Dispatch {
     }
 
     public static var mainQueue: DispatchQueue {
-        return DispatchQueue(raw: dk_dispatch_get_main_queue())
+        return DispatchQueue(raw: dispatch_get_main_queue())
     }
 
     public static var globalQueue: DispatchQueue {
@@ -24,9 +26,12 @@ public struct Dispatch {
     }
 
     public static func getGlobalQueue(qosClass qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
-        let identifier = dk_dispatch_has_qos_class() ?
-            Int(qosClass.rawValue) :
-            qosClass.toPriority().rawValue
+        let identifier: Int
+        if #available(iOS 8.0, *) {
+            identifier = Int(qosClass.rawValue.rawValue)
+        } else {
+            identifier = qosClass.toPriority().rawValue
+        }
 
         return DispatchQueue(raw: dispatch_get_global_queue(identifier, UInt(flags)))
     }

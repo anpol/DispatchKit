@@ -5,25 +5,22 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancelable {
 
-    public let source: dispatch_source_t!
+    public let source: dispatch_source_t
+    
+    public var rawValue: dispatch_object_t {
+        return source
+    }
 
-    public init(raw source: dispatch_source_t!) {
+    public init(raw source: dispatch_source_t) {
         self.source = source
     }
 
-    public init(_ type: DispatchSourceType, handle: Int = 0, mask: UInt = 0, queue: dispatch_queue_t!) {
-        self.source = dk_dispatch_source_create(type, handle, mask, queue)
-    }
-
-
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(source)
-    }
-
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(source, context)
+    public init(_ type: DispatchSourceType, handle: UInt = 0, mask: UInt = 0, queue: dispatch_queue_t!) {
+        self.source = dispatch_source_create(type.toOpaque(), handle, mask, queue)
     }
 
 

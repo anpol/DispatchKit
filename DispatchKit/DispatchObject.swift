@@ -5,20 +5,38 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-@objc public protocol DispatchCookie {
+import Foundation
+
+public protocol DispatchCookie: class {
     // application-defined
 }
 
 public protocol DispatchObject {
-    func getContext() -> DispatchCookie?
-    func setContext(context: DispatchCookie?)
+    
+    var rawValue: dispatch_object_t { get }
+    func getContext<Cookie: DispatchCookie>() -> Cookie?
+    func setContext<Cookie: DispatchCookie>(context: Cookie?)
+    
 }
 
-
-protocol DispatchQueueObject {
-    func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie?
-    func setSpecific(key: UnsafePointer<Void>, _ specific: DispatchCookie?)
-    func setTargetQueue(targetQueue: DispatchQueue?)
+public extension DispatchObject {
+    
+    func getContext<Cookie: DispatchCookie>() -> Cookie? {
+        let context = dispatch_get_context(rawValue)
+        if context == nil {
+            return nil
+        }
+        return .Some(bridge(context))
+    }
+    
+    func setContext<Cookie: DispatchCookie>(context: Cookie?) {
+        let contextPtr = context.map { UnsafeMutablePointer<Void>(Unmanaged.passRetained($0).toOpaque()) } ?? nil
+        dispatch_set_context(rawValue, contextPtr)
+        dispatch_set_finalizer_f(rawValue) { (ptr: UnsafeMutablePointer<Void>) in
+            release(ptr)
+        }
+    }
+    
 }
 
 

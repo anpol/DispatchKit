@@ -5,15 +5,20 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-public struct DispatchQueueAttr {
+import Foundation
 
-    public static let Serial = DispatchQueueAttr(raw: DISPATCH_QUEUE_SERIAL)
-    public static let Concurrent = DispatchQueueAttr(raw: DISPATCH_QUEUE_CONCURRENT)
+public enum DispatchQueueAttr {
 
-    public let attr: dispatch_queue_attr_t!
+    case Serial,
+    Concurrent
 
-    public init(raw attr: dispatch_queue_attr_t!) {
-        self.attr = attr
+    public var rawValue: dispatch_queue_attr_t! {
+        switch self {
+        case .Serial:
+            return DISPATCH_QUEUE_SERIAL
+        case .Concurrent:
+            return DISPATCH_QUEUE_CONCURRENT
+        }
     }
 
 }

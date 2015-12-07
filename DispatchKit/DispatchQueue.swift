@@ -5,27 +5,48 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
-public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResumable {
+import Foundation
 
-    public let queue: dispatch_queue_t!
+internal func dk_dispatch_queue_create_with_qos_class(label: String!, attr: dispatch_queue_attr_t!, qosClass: DispatchQOSClass, relativePriority: Int32) -> dispatch_queue_t {
+    assert(QOS_MIN_RELATIVE_PRIORITY <= relativePriority && relativePriority <= 0, "Invalid parameter: relative_priority")
+    
+    if qosClass == .Unspecified {
+        return dispatch_queue_create(label, attr)
+    }
+    
+    if #available(iOS 8.0, *) {
+        // iOS 8 and later: apply QOS class
+        let attr2 = dispatch_queue_attr_make_with_qos_class(attr, qosClass.rawValue, relativePriority)
+        return dispatch_queue_create(label, attr2)
+    } else {
+        // iOS 7 and earlier: simulate QOS class by applying a target queue.
+        let queue = dispatch_queue_create(label, attr)
+        let priority = qosClass.toPriority()
+        dispatch_set_target_queue(queue, dispatch_get_global_queue(priority.rawValue, 0))
+        return queue
+    }
+}
 
-    public init(raw queue: dispatch_queue_t!) {
+public struct DispatchQueue: DispatchObject, DispatchResumable {
+    
+    public let queue: dispatch_queue_t
+    
+    public var rawValue: dispatch_object_t {
+        return queue
+    }
+
+    public init(raw queue: dispatch_queue_t) {
         self.queue = queue
     }
 
     public init(_ label: String! = nil, attr: DispatchQueueAttr = .Serial,
-         qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int = 0) {
-
-        self.queue = dk_dispatch_queue_create_with_qos_class(label, attr.attr, qosClass, relativePriority)
+        qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int32 = 0) {
+        self.queue = dk_dispatch_queue_create_with_qos_class(label, attr: attr.rawValue, qosClass: qosClass, relativePriority: relativePriority)
     }
 
 
     public var clabel: UnsafePointer<CChar> {
-        if queue != nil {
-            // this function never returns NULL, despite its documentation.
-            return dispatch_queue_get_label(queue)
-        }
-        return nil
+        return dispatch_queue_get_label(queue)
     }
 
     public var label: String {
@@ -47,21 +68,20 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
     }
 
 
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(queue)
+    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
+        let specific = dispatch_get_specific(key)
+        if specific == nil {
+            return nil
+        }
+        
+        return .Some(bridge(specific))
     }
 
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(queue, context)
-    }
-
-
-    public func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie? {
-        return dk_dispatch_queue_get_specific(queue, key)
-    }
-
-    public func setSpecific(key: UnsafePointer<Void>, _ specific: DispatchCookie?) {
-        dk_dispatch_queue_set_specific(queue, key, specific)
+    public func setSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>, _ specific: Cookie?) {
+        let retained = specific.map { UnsafeMutablePointer<Void>(bridgeRetained($0)) }
+        dispatch_queue_set_specific(queue, key, retained ?? nil) { ptr in
+            release(ptr)
+        }
     }
 
     // NOTE set to nil to reset target queue to default
@@ -117,8 +137,12 @@ public struct DispatchQueue: DispatchObject, DispatchQueueObject, DispatchResuma
 
 public struct DispatchCurrentQueue {
 
-    public func getSpecific(key: UnsafePointer<Void>) -> DispatchCookie? {
-        return dk_dispatch_get_specific(key)
+    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
+        let specific: UnsafePointer<Void> = UnsafePointer(dispatch_get_specific(key))
+        if specific == nil {
+            return nil
+        }
+        return .Some(bridge(specific))
     }
 
 

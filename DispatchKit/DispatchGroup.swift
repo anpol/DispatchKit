@@ -5,25 +5,22 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable {
 
-    public let group: dispatch_group_t!
+    public let group: dispatch_group_t
+    
+    public var rawValue: dispatch_object_t {
+        return group
+    }
 
-    public init(raw group: dispatch_group_t!) {
+    public init(raw group: dispatch_group_t) {
         self.group = group
     }
 
     public init() {
         self.group = dispatch_group_create()
-    }
-
-
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(group)
-    }
-
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(group, context)
     }
 
 

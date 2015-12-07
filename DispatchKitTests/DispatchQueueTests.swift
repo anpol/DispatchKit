@@ -84,15 +84,21 @@ class DispatchQueueTests: XCTestCase {
         bar.setSpecific(&Keys.Bar, TestSpecific("Bar"))
 
         foo.sync {
-            XCTAssertEqual("Foo", (Dispatch.currentQueue.getSpecific(&Keys.Foo) as! TestSpecific).name)
-            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as! TestSpecific).name)
-            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
+            let fooTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Foo)
+            let barTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Bar)
+            let bazTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Baz)
+            XCTAssertEqual("Foo", fooTest?.name)
+            XCTAssertEqual("Bar", barTest?.name)
+            XCTAssertNil(bazTest)
         }
 
         bar.sync {
-            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Foo))
-            XCTAssertEqual("Bar", (Dispatch.currentQueue.getSpecific(&Keys.Bar) as! TestSpecific).name)
-            XCTAssertNil(Dispatch.currentQueue.getSpecific(&Keys.Baz))
+            let fooTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Foo)
+            let barTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Bar)
+            let bazTest: TestSpecific? = Dispatch.currentQueue.getSpecific(&Keys.Baz)
+            XCTAssertNil(fooTest)
+            XCTAssertEqual("Bar", barTest?.name)
+            XCTAssertNil(bazTest)
         }
     }
 
