@@ -92,6 +92,7 @@
 		2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceType.swift; sourceTree = "<group>"; };
 		2AF06667195E1E630073DB1B /* DispatchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTests.swift; sourceTree = "<group>"; };
 		2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
+		7E89265D1C161ED40099E69A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		7EBEFA511C15F41200EC91D2 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +118,7 @@
 		2A327800195DE4D30087C265 = {
 			isa = PBXGroup;
 			children = (
+				7E89265D1C161ED40099E69A /* Package.swift */,
 				2A32780C195DE4D30087C265 /* Sources */,
 				7E89279C1C1638C40099E69A /* DispatchKit */,
 				2A327819195DE4D30087C265 /* DispatchKitTests */,
