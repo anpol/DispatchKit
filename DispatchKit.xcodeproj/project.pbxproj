@@ -10,7 +10,6 @@
 		2A1843C41965A1750007DFCF /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */; };
 		2A1C3C24196F514700923560 /* DispatchDataScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3C23196F514700923560 /* DispatchDataScale.swift */; };
 		2A20DA05195F14F500DCDF5D /* DispatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DA04195F14F500DCDF5D /* DispatchData.swift */; };
-		2A327810195DE4D30087C265 /* DispatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A32780F195DE4D30087C265 /* DispatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A327816195DE4D30087C265 /* DispatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A32780A195DE4D30087C265 /* DispatchKit.framework */; };
 		2A327827195DE72E0087C265 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327826195DE72E0087C265 /* DispatchQueue.swift */; };
 		2A327829195DE8580087C265 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327828195DE8580087C265 /* Dispatch.swift */; };
@@ -25,15 +24,13 @@
 		2A6BD27C19649EFB008C270D /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27B19649EFB008C270D /* DispatchSource.swift */; };
 		2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */; };
 		2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A735D981964AA2800C5E9CE /* DispatchIO.swift */; };
-		2A88A471196579E10056066B /* dk_dlsym.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A88A46F196579E10056066B /* dk_dlsym.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2A88A472196579E10056066B /* dk_dlsym.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88A470196579E10056066B /* dk_dlsym.m */; };
-		2A98BC3319689AA400CC95E0 /* dk_enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A98BC3119689AA400CC95E0 /* dk_enums.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A9B7AFD1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */; };
 		2AAE6C3B1967246900F386D5 /* DispatchSemaphoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */; };
 		2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC7C7D1964C5860088893E /* DispatchTime.swift */; };
 		2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */; };
 		2AEDEB4B196F190400007F6C /* DispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */; };
 		2AF06668195E1E630073DB1B /* DispatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06667195E1E630073DB1B /* DispatchTests.swift */; };
+		7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEFA511C15F41200EC91D2 /* Bridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +69,6 @@
 		2A20DA04195F14F500DCDF5D /* DispatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchData.swift; sourceTree = "<group>"; };
 		2A32780A195DE4D30087C265 /* DispatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DispatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A32780E195DE4D30087C265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A32780F195DE4D30087C265 /* DispatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DispatchKit.h; sourceTree = "<group>"; };
 		2A327815195DE4D30087C265 /* DispatchKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DispatchKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A32781B195DE4D30087C265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A327826195DE72E0087C265 /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
@@ -89,9 +85,6 @@
 		2A6BD27B19649EFB008C270D /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		2A735D981964AA2800C5E9CE /* DispatchIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchIO.swift; sourceTree = "<group>"; };
-		2A88A46F196579E10056066B /* dk_dlsym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dk_dlsym.h; sourceTree = "<group>"; };
-		2A88A470196579E10056066B /* dk_dlsym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dk_dlsym.m; sourceTree = "<group>"; };
-		2A98BC3119689AA400CC95E0 /* dk_enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dk_enums.h; sourceTree = "<group>"; };
 		2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceConstantsTests.swift; sourceTree = "<group>"; };
 		2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphoreTests.swift; sourceTree = "<group>"; };
 		2ABC7C7D1964C5860088893E /* DispatchTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTime.swift; sourceTree = "<group>"; };
@@ -99,6 +92,7 @@
 		2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceType.swift; sourceTree = "<group>"; };
 		2AF06667195E1E630073DB1B /* DispatchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTests.swift; sourceTree = "<group>"; };
 		2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
+		7EBEFA511C15F41200EC91D2 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +136,7 @@
 		2A32780C195DE4D30087C265 /* DispatchKit */ = {
 			isa = PBXGroup;
 			children = (
-				2A32780F195DE4D30087C265 /* DispatchKit.h */,
-				2A88A46F196579E10056066B /* dk_dlsym.h */,
-				2A98BC3119689AA400CC95E0 /* dk_enums.h */,
-				2A88A470196579E10056066B /* dk_dlsym.m */,
+				7EBEFA511C15F41200EC91D2 /* Bridge.swift */,
 				2A327828195DE8580087C265 /* Dispatch.swift */,
 				2A20DA04195F14F500DCDF5D /* DispatchData.swift */,
 				2A1C3C23196F514700923560 /* DispatchDataScale.swift */,
@@ -212,9 +203,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A88A471196579E10056066B /* dk_dlsym.h in Headers */,
-				2A327810195DE4D30087C265 /* DispatchKit.h in Headers */,
-				2A98BC3319689AA400CC95E0 /* dk_enums.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,10 +311,10 @@
 				2A327827195DE72E0087C265 /* DispatchQueue.swift in Sources */,
 				2A32782F195E09830087C265 /* DispatchQOSClass.swift in Sources */,
 				2A6BD2761964945E008C270D /* DispatchGroup.swift in Sources */,
+				7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */,
 				2A1C3C24196F514700923560 /* DispatchDataScale.swift in Sources */,
 				2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */,
 				2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */,
-				2A88A472196579E10056066B /* dk_dlsym.m in Sources */,
 				2A327829195DE8580087C265 /* Dispatch.swift in Sources */,
 				2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */,
 				2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */,

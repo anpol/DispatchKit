@@ -5,6 +5,8 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public enum DispatchTime {
 
     case Forever
