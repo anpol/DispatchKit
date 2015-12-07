@@ -5,17 +5,23 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public struct DispatchData<T: IntegerType>: DispatchObject {
 
     typealias Scale = DispatchDataScale<T>
 
     public static var Empty: DispatchData {
-        return DispatchData(raw: dk_dispatch_data_empty())
+        return DispatchData(raw: dispatch_data_empty)
     }
 
-    public let data: dispatch_data_t!
+    public let data: dispatch_data_t
+    
+    public var rawValue: dispatch_object_t {
+        return data
+    }
 
-    public init(raw data: dispatch_data_t!) {
+    public init(raw data: dispatch_data_t) {
         self.data = data
     }
 
@@ -51,14 +57,6 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
 
         let size = Scale.toBytes(count)
         self.data = dispatch_data_create(buffer, size, queue, destructor)
-    }
-
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(data)
-    }
-
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(data, context)
     }
 
     public var count: Int {

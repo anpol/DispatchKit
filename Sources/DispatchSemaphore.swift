@@ -5,26 +5,23 @@
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
+import Foundation
+
 public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
 
-    public let semaphore: dispatch_semaphore_t!
+    public let semaphore: dispatch_semaphore_t
+    
+    public var rawValue: dispatch_object_t {
+        return semaphore
+    }
 
-    public init(raw semaphore: dispatch_semaphore_t!) {
+    public init(raw semaphore: dispatch_semaphore_t) {
         self.semaphore = semaphore
     }
 
     public init(_ value: Int) {
         assert(0 <= value)
         self.semaphore = dispatch_semaphore_create(value)
-    }
-
-
-    public func getContext() -> DispatchCookie? {
-        return dk_dispatch_get_context(semaphore)
-    }
-
-    public func setContext(context: DispatchCookie?) {
-        dk_dispatch_set_context(semaphore, context)
     }
 
 

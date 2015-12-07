@@ -9,27 +9,27 @@ import DispatchKit
 import XCTest
 
 // Reintroduce constants not available on iOS 7, need to test them anyway.
-let QOS_CLASS_USER_INTERACTIVE_: UInt = 0x21
-let QOS_CLASS_USER_INITIATED_: UInt = 0x19
-let QOS_CLASS_DEFAULT_: UInt = 0x15
-let QOS_CLASS_UTILITY_: UInt = 0x11
-let QOS_CLASS_BACKGROUND_: UInt = 0x09
-let QOS_CLASS_UNSPECIFIED_: UInt = 0x00
+let QOS_CLASS_USER_INTERACTIVE_: UInt32 = 0x21
+let QOS_CLASS_USER_INITIATED_: UInt32 = 0x19
+let QOS_CLASS_DEFAULT_: UInt32 = 0x15
+let QOS_CLASS_UTILITY_: UInt32 = 0x11
+let QOS_CLASS_BACKGROUND_: UInt32 = 0x09
+let QOS_CLASS_UNSPECIFIED_: UInt32 = 0x00
 
 class DispatchQueueConstantsTests: XCTestCase {
 
     func testQueueAttr() {
-        XCTAssert(DISPATCH_QUEUE_SERIAL === DispatchQueueAttr.Serial.attr)
-        XCTAssert(DISPATCH_QUEUE_CONCURRENT === DispatchQueueAttr.Concurrent.attr)
+        XCTAssert(DISPATCH_QUEUE_SERIAL === DispatchQueueAttr.Serial.rawValue)
+        XCTAssert(DISPATCH_QUEUE_CONCURRENT === DispatchQueueAttr.Concurrent.rawValue)
     }
 
     func testQOSClass() {
-        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.rawValue)
-        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.rawValue)
-        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.rawValue)
-        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.rawValue)
-        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.rawValue)
-        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.rawValue)
+        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.rawValue.rawValue)
     }
 
     func testQOSClassToPriority() {

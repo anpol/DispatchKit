@@ -10,7 +10,6 @@
 		2A1843C41965A1750007DFCF /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */; };
 		2A1C3C24196F514700923560 /* DispatchDataScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3C23196F514700923560 /* DispatchDataScale.swift */; };
 		2A20DA05195F14F500DCDF5D /* DispatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DA04195F14F500DCDF5D /* DispatchData.swift */; };
-		2A327810195DE4D30087C265 /* DispatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A32780F195DE4D30087C265 /* DispatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A327816195DE4D30087C265 /* DispatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A32780A195DE4D30087C265 /* DispatchKit.framework */; };
 		2A327827195DE72E0087C265 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327826195DE72E0087C265 /* DispatchQueue.swift */; };
 		2A327829195DE8580087C265 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327828195DE8580087C265 /* Dispatch.swift */; };
@@ -25,15 +24,35 @@
 		2A6BD27C19649EFB008C270D /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27B19649EFB008C270D /* DispatchSource.swift */; };
 		2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */; };
 		2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A735D981964AA2800C5E9CE /* DispatchIO.swift */; };
-		2A88A471196579E10056066B /* dk_dlsym.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A88A46F196579E10056066B /* dk_dlsym.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2A88A472196579E10056066B /* dk_dlsym.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A88A470196579E10056066B /* dk_dlsym.m */; };
-		2A98BC3319689AA400CC95E0 /* dk_enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A98BC3119689AA400CC95E0 /* dk_enums.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A9B7AFD1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */; };
 		2AAE6C3B1967246900F386D5 /* DispatchSemaphoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */; };
 		2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC7C7D1964C5860088893E /* DispatchTime.swift */; };
 		2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */; };
 		2AEDEB4B196F190400007F6C /* DispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */; };
 		2AF06668195E1E630073DB1B /* DispatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06667195E1E630073DB1B /* DispatchTests.swift */; };
+		7E8927AC1C16397C0099E69A /* DispatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8927A21C16397C0099E69A /* DispatchKit.framework */; };
+		7E8927B91C1639B20099E69A /* DispatchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A46C1361962EA1D005652A4 /* DispatchDataTests.swift */; };
+		7E8927BA1C1639B20099E69A /* DispatchIOConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3F338D1964D31D00D54912 /* DispatchIOConstantsTests.swift */; };
+		7E8927BB1C1639B20099E69A /* DispatchQueueConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327830195E0AA50087C265 /* DispatchQueueConstantsTests.swift */; };
+		7E8927BC1C1639B20099E69A /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */; };
+		7E8927BD1C1639B20099E69A /* DispatchSemaphoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */; };
+		7E8927BE1C1639B20099E69A /* DispatchSourceConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */; };
+		7E8927BF1C1639B20099E69A /* DispatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06667195E1E630073DB1B /* DispatchTests.swift */; };
+		7E8927C01C1639EA0099E69A /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEFA511C15F41200EC91D2 /* Bridge.swift */; };
+		7E8927C11C1639EA0099E69A /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327828195DE8580087C265 /* Dispatch.swift */; };
+		7E8927C21C1639EA0099E69A /* DispatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DA04195F14F500DCDF5D /* DispatchData.swift */; };
+		7E8927C31C1639EA0099E69A /* DispatchDataScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3C23196F514700923560 /* DispatchDataScale.swift */; };
+		7E8927C41C1639EA0099E69A /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD2751964945E008C270D /* DispatchGroup.swift */; };
+		7E8927C51C1639EA0099E69A /* DispatchIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A735D981964AA2800C5E9CE /* DispatchIO.swift */; };
+		7E8927C61C1639EA0099E69A /* DispatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27919649DBA008C270D /* DispatchObject.swift */; };
+		7E8927C71C1639EA0099E69A /* DispatchQOSClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A32782E195E09830087C265 /* DispatchQOSClass.swift */; };
+		7E8927C81C1639EA0099E69A /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327826195DE72E0087C265 /* DispatchQueue.swift */; };
+		7E8927C91C1639EA0099E69A /* DispatchQueueAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */; };
+		7E8927CA1C1639EA0099E69A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */; };
+		7E8927CB1C1639EA0099E69A /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27B19649EFB008C270D /* DispatchSource.swift */; };
+		7E8927CC1C1639EA0099E69A /* DispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */; };
+		7E8927CD1C1639EA0099E69A /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC7C7D1964C5860088893E /* DispatchTime.swift */; };
+		7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEFA511C15F41200EC91D2 /* Bridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +84,13 @@
 			remoteGlobalIDString = 2A327809195DE4D30087C265;
 			remoteInfo = DispatchKit;
 		};
+		7E8927AD1C16397C0099E69A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A327801195DE4D30087C265 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E8927A11C16397C0099E69A;
+			remoteInfo = "DispatchKit OS X";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +98,6 @@
 		2A20DA04195F14F500DCDF5D /* DispatchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchData.swift; sourceTree = "<group>"; };
 		2A32780A195DE4D30087C265 /* DispatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DispatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A32780E195DE4D30087C265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A32780F195DE4D30087C265 /* DispatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DispatchKit.h; sourceTree = "<group>"; };
 		2A327815195DE4D30087C265 /* DispatchKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DispatchKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A32781B195DE4D30087C265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A327826195DE72E0087C265 /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
@@ -89,9 +114,6 @@
 		2A6BD27B19649EFB008C270D /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		2A735D981964AA2800C5E9CE /* DispatchIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchIO.swift; sourceTree = "<group>"; };
-		2A88A46F196579E10056066B /* dk_dlsym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dk_dlsym.h; sourceTree = "<group>"; };
-		2A88A470196579E10056066B /* dk_dlsym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dk_dlsym.m; sourceTree = "<group>"; };
-		2A98BC3119689AA400CC95E0 /* dk_enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dk_enums.h; sourceTree = "<group>"; };
 		2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceConstantsTests.swift; sourceTree = "<group>"; };
 		2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphoreTests.swift; sourceTree = "<group>"; };
 		2ABC7C7D1964C5860088893E /* DispatchTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTime.swift; sourceTree = "<group>"; };
@@ -99,6 +121,12 @@
 		2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceType.swift; sourceTree = "<group>"; };
 		2AF06667195E1E630073DB1B /* DispatchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTests.swift; sourceTree = "<group>"; };
 		2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
+		7E89265D1C161ED40099E69A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		7E8927A21C16397C0099E69A /* DispatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DispatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8927A61C16397C0099E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E8927AB1C16397C0099E69A /* DispatchKit OS XTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DispatchKit OS XTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E8927CF1C163A750099E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EBEFA511C15F41200EC91D2 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +145,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E89279E1C16397C0099E69A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E8927A81C16397C0099E69A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8927AC1C16397C0099E69A /* DispatchKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2A327800195DE4D30087C265 = {
 			isa = PBXGroup;
 			children = (
-				2A32780C195DE4D30087C265 /* DispatchKit */,
+				7E89265D1C161ED40099E69A /* Package.swift */,
+				2A32780C195DE4D30087C265 /* Sources */,
+				7E8927D01C163B460099E69A /* Tests */,
+				7E89279C1C1638C40099E69A /* DispatchKit */,
 				2A327819195DE4D30087C265 /* DispatchKitTests */,
+				7E8927A31C16397C0099E69A /* DispatchKit OS X */,
+				7E8927CE1C163A750099E69A /* DispatchKit OS XTests */,
 				2A59D1F0196DD2AB00F66CD9 /* Examples */,
 				2A32780B195DE4D30087C265 /* Products */,
 			);
@@ -135,17 +183,16 @@
 			children = (
 				2A32780A195DE4D30087C265 /* DispatchKit.framework */,
 				2A327815195DE4D30087C265 /* DispatchKitTests.xctest */,
+				7E8927A21C16397C0099E69A /* DispatchKit.framework */,
+				7E8927AB1C16397C0099E69A /* DispatchKit OS XTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2A32780C195DE4D30087C265 /* DispatchKit */ = {
+		2A32780C195DE4D30087C265 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2A32780F195DE4D30087C265 /* DispatchKit.h */,
-				2A88A46F196579E10056066B /* dk_dlsym.h */,
-				2A98BC3119689AA400CC95E0 /* dk_enums.h */,
-				2A88A470196579E10056066B /* dk_dlsym.m */,
+				7EBEFA511C15F41200EC91D2 /* Bridge.swift */,
 				2A327828195DE8580087C265 /* Dispatch.swift */,
 				2A20DA04195F14F500DCDF5D /* DispatchData.swift */,
 				2A1C3C23196F514700923560 /* DispatchDataScale.swift */,
@@ -159,40 +206,16 @@
 				2A6BD27B19649EFB008C270D /* DispatchSource.swift */,
 				2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */,
 				2ABC7C7D1964C5860088893E /* DispatchTime.swift */,
-				2A32780D195DE4D30087C265 /* Supporting Files */,
 			);
-			path = DispatchKit;
-			sourceTree = "<group>";
-		};
-		2A32780D195DE4D30087C265 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2A32780E195DE4D30087C265 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		2A327819195DE4D30087C265 /* DispatchKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2A46C1361962EA1D005652A4 /* DispatchDataTests.swift */,
-				2A3F338D1964D31D00D54912 /* DispatchIOConstantsTests.swift */,
-				2A327830195E0AA50087C265 /* DispatchQueueConstantsTests.swift */,
-				2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */,
-				2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */,
-				2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */,
-				2AF06667195E1E630073DB1B /* DispatchTests.swift */,
-				2A32781A195DE4D30087C265 /* Supporting Files */,
-			);
-			path = DispatchKitTests;
-			sourceTree = "<group>";
-		};
-		2A32781A195DE4D30087C265 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				2A32781B195DE4D30087C265 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = DispatchKitTests;
 			sourceTree = "<group>";
 		};
 		2A59D1F0196DD2AB00F66CD9 /* Examples */ = {
@@ -205,6 +228,44 @@
 			path = Examples;
 			sourceTree = "<group>";
 		};
+		7E89279C1C1638C40099E69A /* DispatchKit */ = {
+			isa = PBXGroup;
+			children = (
+				2A32780E195DE4D30087C265 /* Info.plist */,
+			);
+			path = DispatchKit;
+			sourceTree = "<group>";
+		};
+		7E8927A31C16397C0099E69A /* DispatchKit OS X */ = {
+			isa = PBXGroup;
+			children = (
+				7E8927A61C16397C0099E69A /* Info.plist */,
+			);
+			path = "DispatchKit OS X";
+			sourceTree = "<group>";
+		};
+		7E8927CE1C163A750099E69A /* DispatchKit OS XTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E8927CF1C163A750099E69A /* Info.plist */,
+			);
+			path = "DispatchKit OS XTests";
+			sourceTree = "<group>";
+		};
+		7E8927D01C163B460099E69A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2A46C1361962EA1D005652A4 /* DispatchDataTests.swift */,
+				2A3F338D1964D31D00D54912 /* DispatchIOConstantsTests.swift */,
+				2A327830195E0AA50087C265 /* DispatchQueueConstantsTests.swift */,
+				2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */,
+				2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */,
+				2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */,
+				2AF06667195E1E630073DB1B /* DispatchTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -212,9 +273,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A88A471196579E10056066B /* dk_dlsym.h in Headers */,
-				2A327810195DE4D30087C265 /* DispatchKit.h in Headers */,
-				2A98BC3319689AA400CC95E0 /* dk_enums.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E89279F1C16397C0099E69A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,13 +325,49 @@
 			productReference = 2A327815195DE4D30087C265 /* DispatchKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7E8927A11C16397C0099E69A /* DispatchKit OS X */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E8927B31C16397C0099E69A /* Build configuration list for PBXNativeTarget "DispatchKit OS X" */;
+			buildPhases = (
+				7E89279D1C16397C0099E69A /* Sources */,
+				7E89279E1C16397C0099E69A /* Frameworks */,
+				7E89279F1C16397C0099E69A /* Headers */,
+				7E8927A01C16397C0099E69A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DispatchKit OS X";
+			productName = "DispatchKit OS X";
+			productReference = 7E8927A21C16397C0099E69A /* DispatchKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7E8927AA1C16397C0099E69A /* DispatchKit OS XTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E8927B61C16397C0099E69A /* Build configuration list for PBXNativeTarget "DispatchKit OS XTests" */;
+			buildPhases = (
+				7E8927A71C16397C0099E69A /* Sources */,
+				7E8927A81C16397C0099E69A /* Frameworks */,
+				7E8927A91C16397C0099E69A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E8927AE1C16397C0099E69A /* PBXTargetDependency */,
+			);
+			name = "DispatchKit OS XTests";
+			productName = "DispatchKit OS XTests";
+			productReference = 7E8927AB1C16397C0099E69A /* DispatchKit OS XTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2A327801195DE4D30087C265 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Andrei Polushin";
 				TargetAttributes = {
@@ -276,6 +377,12 @@
 					2A327814195DE4D30087C265 = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 2A327809195DE4D30087C265;
+					};
+					7E8927A11C16397C0099E69A = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					7E8927AA1C16397C0099E69A = {
+						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
@@ -293,6 +400,8 @@
 			targets = (
 				2A327809195DE4D30087C265 /* DispatchKit */,
 				2A327814195DE4D30087C265 /* DispatchKitTests */,
+				7E8927A11C16397C0099E69A /* DispatchKit OS X */,
+				7E8927AA1C16397C0099E69A /* DispatchKit OS XTests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,6 +421,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E8927A01C16397C0099E69A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E8927A91C16397C0099E69A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -323,10 +446,10 @@
 				2A327827195DE72E0087C265 /* DispatchQueue.swift in Sources */,
 				2A32782F195E09830087C265 /* DispatchQOSClass.swift in Sources */,
 				2A6BD2761964945E008C270D /* DispatchGroup.swift in Sources */,
+				7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */,
 				2A1C3C24196F514700923560 /* DispatchDataScale.swift in Sources */,
 				2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */,
 				2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */,
-				2A88A472196579E10056066B /* dk_dlsym.m in Sources */,
 				2A327829195DE8580087C265 /* Dispatch.swift in Sources */,
 				2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */,
 				2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */,
@@ -352,6 +475,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E89279D1C16397C0099E69A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8927C31C1639EA0099E69A /* DispatchDataScale.swift in Sources */,
+				7E8927C61C1639EA0099E69A /* DispatchObject.swift in Sources */,
+				7E8927CC1C1639EA0099E69A /* DispatchSourceType.swift in Sources */,
+				7E8927C71C1639EA0099E69A /* DispatchQOSClass.swift in Sources */,
+				7E8927CA1C1639EA0099E69A /* DispatchSemaphore.swift in Sources */,
+				7E8927C21C1639EA0099E69A /* DispatchData.swift in Sources */,
+				7E8927C91C1639EA0099E69A /* DispatchQueueAttr.swift in Sources */,
+				7E8927C01C1639EA0099E69A /* Bridge.swift in Sources */,
+				7E8927C11C1639EA0099E69A /* Dispatch.swift in Sources */,
+				7E8927CB1C1639EA0099E69A /* DispatchSource.swift in Sources */,
+				7E8927C41C1639EA0099E69A /* DispatchGroup.swift in Sources */,
+				7E8927C51C1639EA0099E69A /* DispatchIO.swift in Sources */,
+				7E8927CD1C1639EA0099E69A /* DispatchTime.swift in Sources */,
+				7E8927C81C1639EA0099E69A /* DispatchQueue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E8927A71C16397C0099E69A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E8927B91C1639B20099E69A /* DispatchDataTests.swift in Sources */,
+				7E8927BA1C1639B20099E69A /* DispatchIOConstantsTests.swift in Sources */,
+				7E8927BE1C1639B20099E69A /* DispatchSourceConstantsTests.swift in Sources */,
+				7E8927BD1C1639B20099E69A /* DispatchSemaphoreTests.swift in Sources */,
+				7E8927BF1C1639B20099E69A /* DispatchTests.swift in Sources */,
+				7E8927BB1C1639B20099E69A /* DispatchQueueConstantsTests.swift in Sources */,
+				7E8927BC1C1639B20099E69A /* DispatchQueueTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -374,6 +532,11 @@
 			isa = PBXTargetDependency;
 			target = 2A327809195DE4D30087C265 /* DispatchKit */;
 			targetProxy = 2A9B7AFE196A04DD00D9F3D0 /* PBXContainerItemProxy */;
+		};
+		7E8927AE1C16397C0099E69A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E8927A11C16397C0099E69A /* DispatchKit OS X */;
+			targetProxy = 7E8927AD1C16397C0099E69A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -472,7 +635,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DispatchKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DispatchKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.polushin.${PRODUCT_NAME:rfc1034identifier}";
@@ -490,7 +653,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 3;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = DispatchKit/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DispatchKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.polushin.${PRODUCT_NAME:rfc1034identifier}";
@@ -533,6 +696,92 @@
 			};
 			name = Release;
 		};
+		7E8927B41C16397C0099E69A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "DispatchKit OS X/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polushin.DispatchKit;
+				PRODUCT_NAME = DispatchKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7E8927B51C16397C0099E69A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "DispatchKit OS X/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.polushin.DispatchKit;
+				PRODUCT_NAME = DispatchKit;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		7E8927B71C16397C0099E69A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "DispatchKit OS XTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elvishjerricco.DispatchKit-OS-XTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7E8927B81C16397C0099E69A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "DispatchKit OS XTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.elvishjerricco.DispatchKit-OS-XTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -559,6 +808,24 @@
 			buildConfigurations = (
 				2A327824195DE4D30087C265 /* Debug */,
 				2A327825195DE4D30087C265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E8927B31C16397C0099E69A /* Build configuration list for PBXNativeTarget "DispatchKit OS X" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E8927B41C16397C0099E69A /* Debug */,
+				7E8927B51C16397C0099E69A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E8927B61C16397C0099E69A /* Build configuration list for PBXNativeTarget "DispatchKit OS XTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E8927B71C16397C0099E69A /* Debug */,
+				7E8927B81C16397C0099E69A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
