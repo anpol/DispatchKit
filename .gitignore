@@ -2,6 +2,7 @@ Examples/*.html
 *.html
 
 ## Build generated
+.build
 build/
 DerivedData
 
