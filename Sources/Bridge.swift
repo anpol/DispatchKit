@@ -2,7 +2,6 @@
 //  Bridge.swift
 //  DispatchKit
 //
-//  Created by Will Fancher on 12/7/15.
 //  Copyright © 2015 Andrei Polushin. All rights reserved.
 //
 
