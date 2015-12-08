@@ -17,8 +17,6 @@
 		2A327831195E0AA50087C265 /* DispatchQueueConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327830195E0AA50087C265 /* DispatchQueueConstantsTests.swift */; };
 		2A3F338E1964D31D00D54912 /* DispatchIOConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3F338D1964D31D00D54912 /* DispatchIOConstantsTests.swift */; };
 		2A46C1371962EA1D005652A4 /* DispatchDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A46C1361962EA1D005652A4 /* DispatchDataTests.swift */; };
-		2A59D1F4196DD38500F66CD9 /* CheatSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A59D1F3196DD38500F66CD9 /* CheatSheet.m */; };
-		2A59D1F6196DD3A600F66CD9 /* CheatSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A59D1F5196DD3A600F66CD9 /* CheatSheet.swift */; };
 		2A6BD2761964945E008C270D /* DispatchGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD2751964945E008C270D /* DispatchGroup.swift */; };
 		2A6BD27A19649DBA008C270D /* DispatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27919649DBA008C270D /* DispatchObject.swift */; };
 		2A6BD27C19649EFB008C270D /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27B19649EFB008C270D /* DispatchSource.swift */; };
@@ -454,8 +452,6 @@
 				2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */,
 				2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */,
 				2A6BD27A19649DBA008C270D /* DispatchObject.swift in Sources */,
-				2A59D1F4196DD38500F66CD9 /* CheatSheet.m in Sources */,
-				2A59D1F6196DD3A600F66CD9 /* CheatSheet.swift in Sources */,
 				2A20DA05195F14F500DCDF5D /* DispatchData.swift in Sources */,
 				2A6BD27C19649EFB008C270D /* DispatchSource.swift in Sources */,
 			);
