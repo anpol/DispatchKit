@@ -14,8 +14,9 @@ public protocol DispatchCookie: class {
 public protocol DispatchObject {
     var rawValue: dispatch_object_t! { get }
     func getContext<Cookie: DispatchCookie>() -> Cookie?
+/*
     func setContext<Cookie: DispatchCookie>(context: Cookie?)
-    
+*/
 }
 
 public extension DispatchObject {
@@ -27,7 +28,7 @@ public extension DispatchObject {
         }
         return .Some(bridge(context))
     }
-    
+/*
     func setContext<Cookie: DispatchCookie>(context: Cookie?) {
         let contextPtr = context.map { UnsafeMutablePointer<Void>(Unmanaged.passRetained($0).toOpaque()) } ?? nil
         dispatch_set_context(rawValue, contextPtr)
@@ -35,7 +36,7 @@ public extension DispatchObject {
             release(ptr)
         }
     }
-    
+*/
 }
 
 
