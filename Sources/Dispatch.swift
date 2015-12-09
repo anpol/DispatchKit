@@ -28,7 +28,7 @@ public struct Dispatch {
     public static func getGlobalQueue(qosClass qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
         let identifier: Int
         if #available(iOS 8.0, *) {
-            identifier = Int(qosClass.rawValue.rawValue)
+            identifier = qosClass.rawValue
         } else {
             identifier = qosClass.toPriority().rawValue
         }

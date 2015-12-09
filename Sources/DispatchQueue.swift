@@ -7,24 +7,24 @@
 
 import Foundation
 
-internal func dk_dispatch_queue_create_with_qos_class(label: String!, attr: dispatch_queue_attr_t!, qosClass: DispatchQOSClass, relativePriority: Int32) -> dispatch_queue_t {
-    assert(QOS_MIN_RELATIVE_PRIORITY <= relativePriority && relativePriority <= 0, "Invalid parameter: relative_priority")
-    
+internal func dk_dispatch_queue_create_with_qos_class(label: String!, attr: dispatch_queue_attr_t!, qosClass: DispatchQOSClass, relativePriority: Int) -> dispatch_queue_t! {
+    assert(0...Int(QOS_MIN_RELATIVE_PRIORITY) ~= relativePriority,
+           "Invalid parameter: relative_priority")
+
     if qosClass == .Unspecified {
         return dispatch_queue_create(label, attr)
-    }
-    
-    if #available(iOS 8.0, *) {
+    } else if #available(iOS 8.0, *) {
         // iOS 8 and later: apply QOS class
-        let attr2 = dispatch_queue_attr_make_with_qos_class(attr, qosClass.rawValue, relativePriority)
-        return dispatch_queue_create(label, attr2)
-    } else {
+        if let attr = dispatch_queue_attr_make_with_qos_class(attr, qosClass.rawClass, Int32(relativePriority)) {
+            return dispatch_queue_create(label, attr)
+        }
+    } else if let queue = dispatch_queue_create(label, attr) {
         // iOS 7 and earlier: simulate QOS class by applying a target queue.
-        let queue = dispatch_queue_create(label, attr)
         let priority = qosClass.toPriority()
         dispatch_set_target_queue(queue, dispatch_get_global_queue(priority.rawValue, 0))
         return queue
     }
+    return nil
 }
 
 public struct DispatchQueue: DispatchObject, DispatchResumable {
@@ -40,7 +40,7 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
     }
 
     public init(_ label: String! = nil, attr: DispatchQueueAttr = .Serial,
-        qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int32 = 0) {
+        qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int = 0) {
         self.queue = dk_dispatch_queue_create_with_qos_class(label, attr: attr.rawValue, qosClass: qosClass, relativePriority: relativePriority)
     }
 

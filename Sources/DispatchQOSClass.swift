@@ -10,47 +10,47 @@ import Foundation
 public enum DKDispatchQOSClass {
     
     case Unspecified
-    @available(iOS 8.0, *)
     case UserInteractive
-    @available(iOS 8.0, *)
     case UserInitiated
-    @available(iOS 8.0, *)
     case Default
-    @available(iOS 8.0, *)
     case Utility
-    @available(iOS 8.0, *)
     case Background
-    
-    public var rawValue: qos_class_t {
-        if #available(iOS 8.0, *) {
-            switch self {
-            case .Unspecified:
-                return QOS_CLASS_UNSPECIFIED
-            case .UserInteractive:
-                return QOS_CLASS_USER_INTERACTIVE
-            case .UserInitiated:
-                return QOS_CLASS_USER_INITIATED
-            case .Default:
-                return QOS_CLASS_DEFAULT
-            case .Utility:
-                return QOS_CLASS_UTILITY
-            case .Background:
-                return QOS_CLASS_BACKGROUND
-            }
-        } else {
-            return qos_class_t(0);
+
+    @available(iOS 8.0, *)
+    public var rawClass: qos_class_t {
+        switch self {
+        case .Unspecified:
+            return QOS_CLASS_UNSPECIFIED
+        case .UserInteractive:
+            return QOS_CLASS_USER_INTERACTIVE
+        case .UserInitiated:
+            return QOS_CLASS_USER_INITIATED
+        case .Default:
+            return QOS_CLASS_DEFAULT
+        case .Utility:
+            return QOS_CLASS_UTILITY
+        case .Background:
+            return QOS_CLASS_BACKGROUND
         }
     }
-    
+
+    public var rawValue: Int {
+        if #available(iOS 8.0, *) {
+            return Int(rawClass.rawValue)
+        } else {
+            return 0
+        }
+    }
+
 }
 
 public enum DKDispatchQueuePriority {
-    
+
     case High,
     Default,
     Low,
     Background
-    
+
     public var rawValue: dispatch_queue_priority_t {
         switch self {
         case .High:
