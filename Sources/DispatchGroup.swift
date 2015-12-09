@@ -9,13 +9,13 @@ import Foundation
 
 public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable {
 
-    public let group: dispatch_group_t
-    
-    public var rawValue: dispatch_object_t {
+    public let group: dispatch_group_t!
+
+    public var rawValue: dispatch_object_t! {
         return group
     }
 
-    public init(raw group: dispatch_group_t) {
+    public init(raw group: dispatch_group_t!) {
         self.group = group
     }
 

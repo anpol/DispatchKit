@@ -9,13 +9,13 @@ import Foundation
 
 public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancelable {
 
-    public let source: dispatch_source_t
-    
-    public var rawValue: dispatch_object_t {
+    public let source: dispatch_source_t!
+
+    public var rawValue: dispatch_object_t! {
         return source
     }
 
-    public init(raw source: dispatch_source_t) {
+    public init(raw source: dispatch_source_t!) {
         self.source = source
     }
 

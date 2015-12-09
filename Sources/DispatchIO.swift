@@ -58,13 +58,13 @@ public typealias DispatchIOIntervalFlags = DKDispatchIOIntervalFlags
 
 public struct DispatchIO: DispatchObject {
 
-    public let io: dispatch_io_t
-    
-    public var rawValue: dispatch_object_t {
+    public let io: dispatch_io_t!
+
+    public var rawValue: dispatch_object_t! {
         return io
     }
 
-    public init(raw io: dispatch_io_t) {
+    public init(raw io: dispatch_io_t!) {
         self.io = io
     }
 

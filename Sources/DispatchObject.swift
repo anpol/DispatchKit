@@ -12,8 +12,7 @@ public protocol DispatchCookie: class {
 }
 
 public protocol DispatchObject {
-    
-    var rawValue: dispatch_object_t { get }
+    var rawValue: dispatch_object_t! { get }
     func getContext<Cookie: DispatchCookie>() -> Cookie?
     func setContext<Cookie: DispatchCookie>(context: Cookie?)
     

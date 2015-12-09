@@ -29,13 +29,13 @@ internal func dk_dispatch_queue_create_with_qos_class(label: String!, attr: disp
 
 public struct DispatchQueue: DispatchObject, DispatchResumable {
     
-    public let queue: dispatch_queue_t
-    
-    public var rawValue: dispatch_object_t {
+    public let queue: dispatch_queue_t!
+
+    public var rawValue: dispatch_object_t! {
         return queue
     }
 
-    public init(raw queue: dispatch_queue_t) {
+    public init(raw queue: dispatch_queue_t!) {
         self.queue = queue
     }
 

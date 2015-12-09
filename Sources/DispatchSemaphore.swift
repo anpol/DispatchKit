@@ -9,13 +9,13 @@ import Foundation
 
 public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
 
-    public let semaphore: dispatch_semaphore_t
-    
-    public var rawValue: dispatch_object_t {
+    public let semaphore: dispatch_semaphore_t!
+
+    public var rawValue: dispatch_object_t! {
         return semaphore
     }
 
-    public init(raw semaphore: dispatch_semaphore_t) {
+    public init(raw semaphore: dispatch_semaphore_t!) {
         self.semaphore = semaphore
     }
 

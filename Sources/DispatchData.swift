@@ -15,13 +15,13 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
         return DispatchData(raw: dispatch_data_empty)
     }
 
-    public let data: dispatch_data_t
-    
-    public var rawValue: dispatch_object_t {
+    public let data: dispatch_data_t!
+
+    public var rawValue: dispatch_object_t! {
         return data
     }
 
-    public init(raw data: dispatch_data_t) {
+    public init(raw data: dispatch_data_t!) {
         self.data = data
     }
 
