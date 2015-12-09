@@ -7,27 +7,7 @@
 
 import Foundation
 
-internal func dk_dispatch_queue_create_with_qos_class(label: String!, attr: dispatch_queue_attr_t!, qosClass: DispatchQOSClass, relativePriority: Int) -> dispatch_queue_t! {
-    assert(0...Int(QOS_MIN_RELATIVE_PRIORITY) ~= relativePriority,
-           "Invalid parameter: relative_priority")
-
-    if qosClass == .Unspecified {
-        return dispatch_queue_create(label, attr)
-    } else if #available(iOS 8.0, *) {
-        // iOS 8 and later: apply QOS class
-        if let attr = dispatch_queue_attr_make_with_qos_class(attr, qosClass.rawClass, Int32(relativePriority)) {
-            return dispatch_queue_create(label, attr)
-        }
-    } else if let queue = dispatch_queue_create(label, attr) {
-        // iOS 7 and earlier: simulate QOS class by applying a target queue.
-        let priority = qosClass.toPriority()
-        dispatch_set_target_queue(queue, dispatch_get_global_queue(priority.rawValue, 0))
-        return queue
-    }
-    return nil
-}
-
-public struct DispatchQueue: DispatchObject, DispatchResumable {
+public struct DispatchQueue : DispatchObject, DispatchResumable {
     
     public let queue: dispatch_queue_t!
 
@@ -39,14 +19,41 @@ public struct DispatchQueue: DispatchObject, DispatchResumable {
         self.queue = queue
     }
 
-    public init(_ label: String! = nil, attr: DispatchQueueAttr = .Serial,
-        qosClass: DispatchQOSClass = .Unspecified, relativePriority: Int = 0) {
-        self.queue = dk_dispatch_queue_create_with_qos_class(label, attr: attr.rawValue, qosClass: qosClass, relativePriority: relativePriority)
+    public init(_ label: String! = nil,
+                attr: DispatchQueueAttr = .Serial,
+                qosClass: DispatchQOSClass = .Unspecified,
+                relativePriority: Int = 0) {
+        assert(Int(QOS_MIN_RELATIVE_PRIORITY)...0 ~= relativePriority,
+               "Invalid parameter: relative_priority")
+
+        if qosClass == .Unspecified {
+            self.queue = dispatch_queue_create(label, attr.rawValue)
+        } else if #available(iOS 8.0, *) {
+            // iOS 8 and later: apply QOS class
+            if let qosAttr = dispatch_queue_attr_make_with_qos_class(
+                    attr.rawValue, qosClass.rawClass, Int32(relativePriority)) {
+                self.queue = dispatch_queue_create(label, qosAttr)
+            } else {
+                self.queue = nil
+            }
+        } else {
+            self.queue = dispatch_queue_create(label, attr.rawValue)
+
+            // iOS 7 and earlier: simulate QOS class by applying a target queue.
+            if let queue = self.queue {
+                let priority = DispatchQueuePriority(qosClass: qosClass)
+                let target = dispatch_get_global_queue(priority.rawValue, 0)
+                dispatch_set_target_queue(queue, target)
+            }
+        }
     }
 
-
     public var clabel: UnsafePointer<CChar> {
-        return dispatch_queue_get_label(queue)
+        if queue != nil {
+            // this function never returns NULL, despite its documentation.
+            return dispatch_queue_get_label(queue)
+        }
+        return nil
     }
 
     public var label: String {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum DKDispatchQOSClass {
+public enum DispatchQOSClass {
     
     case Unspecified
     case UserInteractive
@@ -15,6 +15,24 @@ public enum DKDispatchQOSClass {
     case Default
     case Utility
     case Background
+
+    // Performs mapping as specified in the documentation.
+    public init(priority: DispatchQueuePriority) {
+        if #available(iOS 8.0, *) {
+            switch priority {
+            case .High:
+                self = .UserInitiated
+            case .Low:
+                self = .Utility
+            case .Background:
+                self = .Background
+            case .Default:
+                self = .Default
+            }
+        } else {
+            self = .Unspecified
+        }
+    }
 
     @available(iOS 8.0, *)
     public var rawClass: qos_class_t {
@@ -44,12 +62,30 @@ public enum DKDispatchQOSClass {
 
 }
 
-public enum DKDispatchQueuePriority {
+public enum DispatchQueuePriority {
 
-    case High,
-    Default,
-    Low,
-    Background
+    case High
+    case Default
+    case Low
+    case Background
+
+    // Performs best possible, yet approximate mapping.
+    public init(qosClass: DispatchQOSClass) {
+        switch qosClass {
+        case .UserInteractive:
+            self = .High
+        case .UserInitiated:
+            self = .High
+        case .Utility:
+            self = .Low
+        case .Background:
+            self = .Background
+        case .Default:
+            self = .Default
+        case .Unspecified:
+            self = .Default
+        }
+    }
 
     public var rawValue: dispatch_queue_priority_t {
         switch self {
@@ -64,48 +100,4 @@ public enum DKDispatchQueuePriority {
         }
     }
     
-}
-
-public typealias DispatchQueuePriority = DKDispatchQueuePriority
-
-public typealias DispatchQOSClass = DKDispatchQOSClass
-
-extension DispatchQOSClass {
-
-    // Returns best possible, yet approximate mapping.
-    public func toPriority() -> DispatchQueuePriority {
-        switch self {
-        case .UserInteractive:
-            return .High
-        case .UserInitiated:
-            return .High
-        case .Utility:
-            return .Low
-        case .Background:
-            return .Background
-        case .Default:
-            return .Default
-        case .Unspecified:
-            return .Default
-        }
-    }
-
-    // Returns mapping as specified in the documentation.
-    public static func fromPriority(priority: DispatchQueuePriority) -> DispatchQOSClass {
-        if #available(iOS 8.0, *) {
-            switch priority {
-            case .High:
-                return .UserInitiated
-            case .Low:
-                return .Utility
-            case .Background:
-                return .Background
-            case .Default:
-                return .Default
-            }
-        } else {
-            return .Unspecified
-        }
-    }
-
 }

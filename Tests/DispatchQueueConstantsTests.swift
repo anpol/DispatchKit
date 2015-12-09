@@ -9,12 +9,12 @@ import DispatchKit
 import XCTest
 
 // Reintroduce constants not available on iOS 7, need to test them anyway.
-let QOS_CLASS_USER_INTERACTIVE_: UInt32 = 0x21
-let QOS_CLASS_USER_INITIATED_: UInt32 = 0x19
-let QOS_CLASS_DEFAULT_: UInt32 = 0x15
-let QOS_CLASS_UTILITY_: UInt32 = 0x11
-let QOS_CLASS_BACKGROUND_: UInt32 = 0x09
-let QOS_CLASS_UNSPECIFIED_: UInt32 = 0x00
+let QOS_CLASS_USER_INTERACTIVE_: Int = 0x21
+let QOS_CLASS_USER_INITIATED_: Int = 0x19
+let QOS_CLASS_DEFAULT_: Int = 0x15
+let QOS_CLASS_UTILITY_: Int = 0x11
+let QOS_CLASS_BACKGROUND_: Int = 0x09
+let QOS_CLASS_UNSPECIFIED_: Int = 0x00
 
 class DispatchQueueConstantsTests: XCTestCase {
 
@@ -24,28 +24,28 @@ class DispatchQueueConstantsTests: XCTestCase {
     }
 
     func testQOSClass() {
-        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.rawValue.rawValue)
-        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.rawValue.rawValue)
-        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.rawValue.rawValue)
-        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.rawValue.rawValue)
-        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.rawValue.rawValue)
-        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.rawValue.rawValue)
+        XCTAssertEqual(QOS_CLASS_UNSPECIFIED_, DispatchQOSClass.Unspecified.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INTERACTIVE_, DispatchQOSClass.UserInteractive.rawValue)
+        XCTAssertEqual(QOS_CLASS_USER_INITIATED_, DispatchQOSClass.UserInitiated.rawValue)
+        XCTAssertEqual(QOS_CLASS_DEFAULT_, DispatchQOSClass.Default.rawValue)
+        XCTAssertEqual(QOS_CLASS_UTILITY_, DispatchQOSClass.Utility.rawValue)
+        XCTAssertEqual(QOS_CLASS_BACKGROUND_, DispatchQOSClass.Background.rawValue)
     }
 
-    func testQOSClassToPriority() {
-        XCTAssertEqual(DispatchQueuePriority.Default, DispatchQOSClass.Unspecified.toPriority())
-        XCTAssertEqual(DispatchQueuePriority.High, DispatchQOSClass.UserInteractive.toPriority())
-        XCTAssertEqual(DispatchQueuePriority.High, DispatchQOSClass.UserInitiated.toPriority())
-        XCTAssertEqual(DispatchQueuePriority.Default, DispatchQOSClass.Default.toPriority())
-        XCTAssertEqual(DispatchQueuePriority.Low, DispatchQOSClass.Utility.toPriority())
-        XCTAssertEqual(DispatchQueuePriority.Background, DispatchQOSClass.Background.toPriority())
+    func testPriorityFromQOSClass() {
+        XCTAssertEqual(DispatchQueuePriority.Default, DispatchQueuePriority(qosClass: DispatchQOSClass.Unspecified))
+        XCTAssertEqual(DispatchQueuePriority.High, DispatchQueuePriority(qosClass: DispatchQOSClass.UserInteractive))
+        XCTAssertEqual(DispatchQueuePriority.High, DispatchQueuePriority(qosClass: DispatchQOSClass.UserInitiated))
+        XCTAssertEqual(DispatchQueuePriority.Default, DispatchQueuePriority(qosClass: DispatchQOSClass.Default))
+        XCTAssertEqual(DispatchQueuePriority.Low, DispatchQueuePriority(qosClass: DispatchQOSClass.Utility))
+        XCTAssertEqual(DispatchQueuePriority.Background, DispatchQueuePriority(qosClass: DispatchQOSClass.Background))
     }
 
     func testQOSClassFromPriority() {
-        XCTAssertEqual(DispatchQOSClass.UserInitiated, DispatchQOSClass.fromPriority(.High))
-        XCTAssertEqual(DispatchQOSClass.Default, DispatchQOSClass.fromPriority(.Default))
-        XCTAssertEqual(DispatchQOSClass.Utility, DispatchQOSClass.fromPriority(.Low))
-        XCTAssertEqual(DispatchQOSClass.Background, DispatchQOSClass.fromPriority(.Background))
+        XCTAssertEqual(DispatchQOSClass.UserInitiated, DispatchQOSClass(priority: .High))
+        XCTAssertEqual(DispatchQOSClass.Default, DispatchQOSClass(priority: .Default))
+        XCTAssertEqual(DispatchQOSClass.Utility, DispatchQOSClass(priority: .Low))
+        XCTAssertEqual(DispatchQOSClass.Background, DispatchQOSClass(priority: .Background))
     }
 
     func testQueuePriority() {

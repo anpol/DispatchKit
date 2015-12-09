@@ -30,7 +30,7 @@ public struct Dispatch {
         if #available(iOS 8.0, *) {
             identifier = qosClass.rawValue
         } else {
-            identifier = qosClass.toPriority().rawValue
+            identifier = DispatchQueuePriority(qosClass: qosClass).rawValue
         }
 
         return DispatchQueue(raw: dispatch_get_global_queue(identifier, UInt(flags)))

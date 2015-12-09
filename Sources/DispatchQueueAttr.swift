@@ -8,9 +8,8 @@
 import Foundation
 
 public enum DispatchQueueAttr {
-
-    case Serial,
-    Concurrent
+    case Serial
+    case Concurrent
 
     public var rawValue: dispatch_queue_attr_t! {
         switch self {
@@ -20,5 +19,4 @@ public enum DispatchQueueAttr {
             return DISPATCH_QUEUE_CONCURRENT
         }
     }
-
 }
