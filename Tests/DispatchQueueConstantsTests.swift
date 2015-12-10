@@ -9,12 +9,12 @@ import DispatchKit
 import XCTest
 
 // Reintroduce constants not available on iOS 7, need to test them anyway.
-let QOS_CLASS_USER_INTERACTIVE_: Int = 0x21
-let QOS_CLASS_USER_INITIATED_: Int = 0x19
-let QOS_CLASS_DEFAULT_: Int = 0x15
-let QOS_CLASS_UTILITY_: Int = 0x11
-let QOS_CLASS_BACKGROUND_: Int = 0x09
-let QOS_CLASS_UNSPECIFIED_: Int = 0x00
+let QOS_CLASS_UNSPECIFIED_ = 0x00
+let QOS_CLASS_USER_INTERACTIVE_ = 0x21
+let QOS_CLASS_USER_INITIATED_ = 0x19
+let QOS_CLASS_DEFAULT_ = 0x15
+let QOS_CLASS_UTILITY_ = 0x11
+let QOS_CLASS_BACKGROUND_ = 0x09
 
 class DispatchQueueConstantsTests: XCTestCase {
 
