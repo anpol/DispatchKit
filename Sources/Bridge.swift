@@ -21,6 +21,6 @@ func bridgeTransfer<T: AnyObject>(ptr: UnsafePointer<Void>) -> T {
     return Unmanaged<T>.fromOpaque(COpaquePointer(ptr)).takeRetainedValue()
 }
 
-func release(ptr: UnsafePointer<Void>) {
+func bridgeRelease(ptr: UnsafeMutablePointer<Void>) {
     Unmanaged<AnyObject>.fromOpaque(COpaquePointer(ptr)).release()
 }

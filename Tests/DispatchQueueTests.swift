@@ -73,7 +73,6 @@ class DispatchQueueTests: XCTestCase {
         }
     }
 
-/*
     func testQueueSpecific() {
         struct Keys {
             static var Foo: Int8 = 0
@@ -102,6 +101,5 @@ class DispatchQueueTests: XCTestCase {
             XCTAssertNil(bazTest)
         }
     }
-*/
 
 }

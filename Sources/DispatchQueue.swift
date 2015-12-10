@@ -84,14 +84,10 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
         return .Some(bridge(specific))
     }
 
-/*
     public func setSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>, _ specific: Cookie?) {
         let retained = specific.map { UnsafeMutablePointer<Void>(bridgeRetained($0)) }
-        dispatch_queue_set_specific(queue, key, retained ?? nil) { ptr in
-            release(ptr)
-        }
+        dispatch_queue_set_specific(queue, key, retained ?? nil, bridgeRelease)
     }
-*/
 
     // NOTE set to nil to reset target queue to default
     public func setTargetQueue(targetQueue: DispatchQueue?) {
