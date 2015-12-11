@@ -19,8 +19,8 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
         self.source = source
     }
 
-    public init(_ type: DispatchSourceType, handle: UInt = 0, mask: UInt = 0, queue: dispatch_queue_t!) {
-        self.source = dispatch_source_create(type.toOpaque(), handle, mask, queue)
+    public init(_ type: DispatchSourceType, handle: UInt = 0, mask: UInt = 0, queue: DispatchQueue) {
+        self.source = dispatch_source_create(type.toOpaque(), handle, mask, queue.queue)
     }
 
 
