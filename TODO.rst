@@ -2,7 +2,8 @@
  TODO
 ======
 
-- [ ] assert(not nil) before each call ?
+- [ ] make rawValue non-optional everywhere, use failable initializers
+- [ ] add optional global error handler to be called for NULLs from API
 - [ ] DispatchData - should adopt Sliceable, like Array ?
 
 - [ ] DispatchData more tests

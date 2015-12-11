@@ -71,9 +71,6 @@ For instance, the ``DISPATCH_QUEUE_PRIORITY_*`` constants are mapped as follows:
         case Background = DISPATCH_QUEUE_PRIORITY_BACKGROUND
     }
 
-Actual mapping is performed by the Swift compiler behind the scenes. Refer to
-`dk_enums.h <DispatchKit/dk_enums.h>`_ for the corresponding Objective-C code.
-
 
 Queuing Tasks
 -------------
@@ -116,7 +113,7 @@ The previous example uses time expressions. Other forms of time expressions are 
     .Now + .Seconds(3) + .Milliseconds(145) + .Microseconds(926) + .Nanoseconds(535)
     .WallClock(timespec) + .Days(5) + .Hours(40)
 
-Refer to `DispatchTime.swift <DispatchKit/DispatchTime.swift>`_ for further details.
+Refer to `DispatchTime.swift <Sources/DispatchTime.swift>`_ for further details.
 
 An additional ``.Forever`` constant is used by default with ``wait()`` method defined
 for groups and semaphores.
@@ -174,23 +171,22 @@ Dispatch I/O
 ------------
 
 For details, refer to
-`DispatchIO.swift <DispatchKit/DispatchIO.swift>`_ and
-`DispatchData.swift <DispatchKit/DispatchData.swift>`_.
+`DispatchIO.swift <Sources/DispatchIO.swift>`_ and
+`DispatchData.swift <Sources/DispatchData.swift>`_.
 
 
 Dispatch Sources
 ----------------
 
 For details, refer to
-`DispatchSource.swift <DispatchKit/DispatchSource.swift>`_ and various flags declared in
-`DispatchSourceType.swift <DispatchKit/DispatchSourceType.swift>`_ and
-`dk_enums.h <DispatchKit/dk_enums.h>`_.
+`DispatchSource.swift <Sources/DispatchSource.swift>`_ and various flags declared in
+`DispatchSourceType.swift <Sources/DispatchSourceType.swift>`_.
 
 
 Compatibility
 =============
 
-The DispatchKit is designed to be source-compatible with iOS 7 SDK, binary-compatible with iOS 7 platform.
+The DispatchKit is designed to be binary-compatible with iOS 7 platform.
 
 
 License 
@@ -202,5 +198,3 @@ The DispatchKit is available under the `MIT License <LICENSE.rst>`_.
 .. References:
 .. _Grand Central Dispatch: https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/
 .. _libdispatch: http://libdispatch.macosforge.org
-.. _@DispatchKit: https://twitter.com/DispatchKit
-

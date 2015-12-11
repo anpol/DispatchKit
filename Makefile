@@ -1,12 +1,9 @@
-HTML = \
-	CONTRIBUTING.html \
-	LICENSE.html \
-	RATIONALE.html \
-	README.html 
+RST_FILES = $(wildcard *.rst)
+HTML_FILES = $(patsubst %.rst,%.html,$(RST_FILES))
 
-all : $(HTML)
+all : $(HTML_FILES)
 
-$(HTML): %.html: %.rst Makefile
+$(HTML_FILES): %.html: %.rst Makefile
 	rst2html.py $< $@
 
 README.html : Examples/CheatSheet.rst
