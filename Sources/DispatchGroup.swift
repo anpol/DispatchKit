@@ -1,6 +1,6 @@
 //
 //  DispatchGroup.swift
-//  DispatchKit
+//  DispatchKit <https://github.com/anpol/DispatchKit>
 //
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //

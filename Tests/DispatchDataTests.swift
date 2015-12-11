@@ -1,8 +1,7 @@
 //
 //  DispatchDataTests.swift
-//  DispatchKit
+//  DispatchKit <https://github.com/anpol/DispatchKit>
 //
-//  Created by Andrei Polushin on 01.07.14.
 //  Copyright (c) 2014 Andrei Polushin. All rights reserved.
 //
 
