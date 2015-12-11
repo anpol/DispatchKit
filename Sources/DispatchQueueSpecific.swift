@@ -8,27 +8,19 @@
 import Foundation
 
 public extension DispatchQueue {
-    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
-        let specific = dispatch_get_specific(key)
-        if specific == nil {
-            return nil
-        }
-        
-        return .Some(bridge(specific))
+    public func getSpecific<T: AnyObject>(key: UnsafePointer<Void>) -> T? {
+        let specific = dispatch_queue_get_specific(queue, key)
+        return dk_takeUnretained(specific)
     }
 
-    public func setSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>, _ specific: Cookie?) {
-        let retained = specific.map { UnsafeMutablePointer<Void>(bridgeRetained($0)) }
-        dispatch_queue_set_specific(queue, key, retained ?? nil, bridgeRelease)
+    public func setSpecific<T: AnyObject>(key: UnsafePointer<Void>, _ specific: T?) {
+        dispatch_queue_set_specific(queue, key, dk_passRetained(specific), dk_release)
     }
 }
 
 public extension DispatchCurrentQueue {
-    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
-        let specific: UnsafePointer<Void> = UnsafePointer(dispatch_get_specific(key))
-        if specific == nil {
-            return nil
-        }
-        return .Some(bridge(specific))
+    public func getSpecific<T: AnyObject>(key: UnsafePointer<Void>) -> T? {
+        let specific = dispatch_get_specific(key)
+        return dk_takeUnretained(specific)
     }
 }

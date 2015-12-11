@@ -44,7 +44,6 @@
 		7E8927BD1C1639B20099E69A /* DispatchSemaphoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */; };
 		7E8927BE1C1639B20099E69A /* DispatchSourceConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */; };
 		7E8927BF1C1639B20099E69A /* DispatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF06667195E1E630073DB1B /* DispatchTests.swift */; };
-		7E8927C01C1639EA0099E69A /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEFA511C15F41200EC91D2 /* Bridge.swift */; };
 		7E8927C11C1639EA0099E69A /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A327828195DE8580087C265 /* Dispatch.swift */; };
 		7E8927C21C1639EA0099E69A /* DispatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A20DA04195F14F500DCDF5D /* DispatchData.swift */; };
 		7E8927C31C1639EA0099E69A /* DispatchDataScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1C3C23196F514700923560 /* DispatchDataScale.swift */; };
@@ -58,7 +57,6 @@
 		7E8927CB1C1639EA0099E69A /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27B19649EFB008C270D /* DispatchSource.swift */; };
 		7E8927CC1C1639EA0099E69A /* DispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */; };
 		7E8927CD1C1639EA0099E69A /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC7C7D1964C5860088893E /* DispatchTime.swift */; };
-		7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEFA511C15F41200EC91D2 /* Bridge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,7 +134,6 @@
 		7E8927A61C16397C0099E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E8927AB1C16397C0099E69A /* DispatchKit OS XTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DispatchKit OS XTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E8927CF1C163A750099E69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EBEFA511C15F41200EC91D2 /* Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +200,6 @@
 		2A32780C195DE4D30087C265 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7EBEFA511C15F41200EC91D2 /* Bridge.swift */,
 				2A327828195DE8580087C265 /* Dispatch.swift */,
 				2A20DA04195F14F500DCDF5D /* DispatchData.swift */,
 				2A1C3C23196F514700923560 /* DispatchDataScale.swift */,
@@ -461,7 +457,6 @@
 				2A327827195DE72E0087C265 /* DispatchQueue.swift in Sources */,
 				2A32782F195E09830087C265 /* DispatchQOSClass.swift in Sources */,
 				2A6BD2761964945E008C270D /* DispatchGroup.swift in Sources */,
-				7EBEFA521C15F41200EC91D2 /* Bridge.swift in Sources */,
 				2A1C3C24196F514700923560 /* DispatchDataScale.swift in Sources */,
 				2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */,
 				2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */,
@@ -505,7 +500,6 @@
 				7E8927C21C1639EA0099E69A /* DispatchData.swift in Sources */,
 				7E8927C91C1639EA0099E69A /* DispatchQueueAttr.swift in Sources */,
 				2A9C4C851C1B3D47007349A4 /* DispatchQueueSpecific.swift in Sources */,
-				7E8927C01C1639EA0099E69A /* Bridge.swift in Sources */,
 				7E8927C11C1639EA0099E69A /* Dispatch.swift in Sources */,
 				7E8927CB1C1639EA0099E69A /* DispatchSource.swift in Sources */,
 				7E8927C41C1639EA0099E69A /* DispatchGroup.swift in Sources */,

@@ -23,7 +23,7 @@ class DispatchQueueSpecificTests : XCTestCase {
         bar = nil
     }
 
-    class TestSpecific: DispatchCookie {
+    class TestSpecific {
         let name: String
         init(_ name: String) {
             self.name = name
