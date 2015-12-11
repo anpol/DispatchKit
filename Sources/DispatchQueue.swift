@@ -74,21 +74,6 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
         return label.hasPrefix("com.apple.")
     }
 
-
-    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
-        let specific = dispatch_get_specific(key)
-        if specific == nil {
-            return nil
-        }
-        
-        return .Some(bridge(specific))
-    }
-
-    public func setSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>, _ specific: Cookie?) {
-        let retained = specific.map { UnsafeMutablePointer<Void>(bridgeRetained($0)) }
-        dispatch_queue_set_specific(queue, key, retained ?? nil, bridgeRelease)
-    }
-
     // NOTE set to nil to reset target queue to default
     public func setTargetQueue(targetQueue: DispatchQueue?) {
         assert(!isSystemQueue)
@@ -139,18 +124,7 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
 
 }
 
-
 public struct DispatchCurrentQueue {
-
-    public func getSpecific<Cookie: DispatchCookie>(key: UnsafePointer<Void>) -> Cookie? {
-        let specific: UnsafePointer<Void> = UnsafePointer(dispatch_get_specific(key))
-        if specific == nil {
-            return nil
-        }
-        return .Some(bridge(specific))
-    }
-
-
     public var clabel: UnsafePointer<CChar> {
         return dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)
     }
@@ -159,5 +133,4 @@ public struct DispatchCurrentQueue {
         let (s, _) = String.fromCStringRepairingIllFormedUTF8(clabel)
         return s ?? "(null)"
     }
-
 }

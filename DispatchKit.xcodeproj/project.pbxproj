@@ -23,6 +23,14 @@
 		2A6BD27E1964A34B008C270D /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */; };
 		2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A735D981964AA2800C5E9CE /* DispatchIO.swift */; };
 		2A9B7AFD1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */; };
+		2A9C4C7C1C1B3C04007349A4 /* DispatchObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7B1C1B3C04007349A4 /* DispatchObjectContext.swift */; };
+		2A9C4C841C1B3D47007349A4 /* DispatchQueueSpecific.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C831C1B3D47007349A4 /* DispatchQueueSpecific.swift */; };
+		2A9C4C851C1B3D47007349A4 /* DispatchQueueSpecific.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C831C1B3D47007349A4 /* DispatchQueueSpecific.swift */; };
+		2A9C4C861C1B3D6E007349A4 /* DispatchObjectContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7D1C1B3D12007349A4 /* DispatchObjectContextTests.swift */; };
+		2A9C4C871C1B3D6E007349A4 /* DispatchQueueSpecificTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7E1C1B3D12007349A4 /* DispatchQueueSpecificTests.swift */; };
+		2A9C4C881C1B3D6F007349A4 /* DispatchObjectContextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7D1C1B3D12007349A4 /* DispatchObjectContextTests.swift */; };
+		2A9C4C891C1B3D6F007349A4 /* DispatchQueueSpecificTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7E1C1B3D12007349A4 /* DispatchQueueSpecificTests.swift */; };
+		2A9C4C8A1C1B3D76007349A4 /* DispatchObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9C4C7B1C1B3C04007349A4 /* DispatchObjectContext.swift */; };
 		2AAE6C3B1967246900F386D5 /* DispatchSemaphoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */; };
 		2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC7C7D1964C5860088893E /* DispatchTime.swift */; };
 		2AE339EF1968A88300DA1207 /* DispatchQueueAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */; };
@@ -113,6 +121,10 @@
 		2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		2A735D981964AA2800C5E9CE /* DispatchIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchIO.swift; sourceTree = "<group>"; };
 		2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceConstantsTests.swift; sourceTree = "<group>"; };
+		2A9C4C7B1C1B3C04007349A4 /* DispatchObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchObjectContext.swift; sourceTree = "<group>"; };
+		2A9C4C7D1C1B3D12007349A4 /* DispatchObjectContextTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchObjectContextTests.swift; sourceTree = "<group>"; };
+		2A9C4C7E1C1B3D12007349A4 /* DispatchQueueSpecificTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueSpecificTests.swift; sourceTree = "<group>"; };
+		2A9C4C831C1B3D47007349A4 /* DispatchQueueSpecific.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueSpecific.swift; sourceTree = "<group>"; };
 		2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphoreTests.swift; sourceTree = "<group>"; };
 		2ABC7C7D1964C5860088893E /* DispatchTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTime.swift; sourceTree = "<group>"; };
 		2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueAttr.swift; sourceTree = "<group>"; };
@@ -198,9 +210,11 @@
 				2A6BD2751964945E008C270D /* DispatchGroup.swift */,
 				2A735D981964AA2800C5E9CE /* DispatchIO.swift */,
 				2A6BD27919649DBA008C270D /* DispatchObject.swift */,
+				2A9C4C7B1C1B3C04007349A4 /* DispatchObjectContext.swift */,
 				2A32782E195E09830087C265 /* DispatchQOSClass.swift */,
 				2A327826195DE72E0087C265 /* DispatchQueue.swift */,
 				2AE339EE1968A88300DA1207 /* DispatchQueueAttr.swift */,
+				2A9C4C831C1B3D47007349A4 /* DispatchQueueSpecific.swift */,
 				2A6BD27D1964A34B008C270D /* DispatchSemaphore.swift */,
 				2A6BD27B19649EFB008C270D /* DispatchSource.swift */,
 				2AEDEB4A196F190400007F6C /* DispatchSourceType.swift */,
@@ -256,7 +270,9 @@
 			children = (
 				2A46C1361962EA1D005652A4 /* DispatchDataTests.swift */,
 				2A3F338D1964D31D00D54912 /* DispatchIOConstantsTests.swift */,
+				2A9C4C7D1C1B3D12007349A4 /* DispatchObjectContextTests.swift */,
 				2A327830195E0AA50087C265 /* DispatchQueueConstantsTests.swift */,
+				2A9C4C7E1C1B3D12007349A4 /* DispatchQueueSpecificTests.swift */,
 				2AF06669195E1FA50073DB1B /* DispatchQueueTests.swift */,
 				2AAE6C3A1967246900F386D5 /* DispatchSemaphoreTests.swift */,
 				2A9B7AFC1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift */,
@@ -452,6 +468,8 @@
 				2A327829195DE8580087C265 /* Dispatch.swift in Sources */,
 				2A735D991964AA2800C5E9CE /* DispatchIO.swift in Sources */,
 				2ABC7C7E1964C5860088893E /* DispatchTime.swift in Sources */,
+				2A9C4C7C1C1B3C04007349A4 /* DispatchObjectContext.swift in Sources */,
+				2A9C4C841C1B3D47007349A4 /* DispatchQueueSpecific.swift in Sources */,
 				2A6BD27A19649DBA008C270D /* DispatchObject.swift in Sources */,
 				2A20DA05195F14F500DCDF5D /* DispatchData.swift in Sources */,
 				2A6BD27C19649EFB008C270D /* DispatchSource.swift in Sources */,
@@ -463,9 +481,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AAE6C3B1967246900F386D5 /* DispatchSemaphoreTests.swift in Sources */,
+				2A9C4C891C1B3D6F007349A4 /* DispatchQueueSpecificTests.swift in Sources */,
 				2A46C1371962EA1D005652A4 /* DispatchDataTests.swift in Sources */,
 				2A327831195E0AA50087C265 /* DispatchQueueConstantsTests.swift in Sources */,
 				2A3F338E1964D31D00D54912 /* DispatchIOConstantsTests.swift in Sources */,
+				2A9C4C881C1B3D6F007349A4 /* DispatchObjectContextTests.swift in Sources */,
 				2A1843C41965A1750007DFCF /* DispatchQueueTests.swift in Sources */,
 				2A9B7AFD1969FFC300D9F3D0 /* DispatchSourceConstantsTests.swift in Sources */,
 				2AF06668195E1E630073DB1B /* DispatchTests.swift in Sources */,
@@ -478,11 +498,13 @@
 			files = (
 				7E8927C31C1639EA0099E69A /* DispatchDataScale.swift in Sources */,
 				7E8927C61C1639EA0099E69A /* DispatchObject.swift in Sources */,
+				2A9C4C8A1C1B3D76007349A4 /* DispatchObjectContext.swift in Sources */,
 				7E8927CC1C1639EA0099E69A /* DispatchSourceType.swift in Sources */,
 				7E8927C71C1639EA0099E69A /* DispatchQOSClass.swift in Sources */,
 				7E8927CA1C1639EA0099E69A /* DispatchSemaphore.swift in Sources */,
 				7E8927C21C1639EA0099E69A /* DispatchData.swift in Sources */,
 				7E8927C91C1639EA0099E69A /* DispatchQueueAttr.swift in Sources */,
+				2A9C4C851C1B3D47007349A4 /* DispatchQueueSpecific.swift in Sources */,
 				7E8927C01C1639EA0099E69A /* Bridge.swift in Sources */,
 				7E8927C11C1639EA0099E69A /* Dispatch.swift in Sources */,
 				7E8927CB1C1639EA0099E69A /* DispatchSource.swift in Sources */,
@@ -498,9 +520,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E8927B91C1639B20099E69A /* DispatchDataTests.swift in Sources */,
+				2A9C4C871C1B3D6E007349A4 /* DispatchQueueSpecificTests.swift in Sources */,
 				7E8927BA1C1639B20099E69A /* DispatchIOConstantsTests.swift in Sources */,
 				7E8927BE1C1639B20099E69A /* DispatchSourceConstantsTests.swift in Sources */,
 				7E8927BD1C1639B20099E69A /* DispatchSemaphoreTests.swift in Sources */,
+				2A9C4C861C1B3D6E007349A4 /* DispatchObjectContextTests.swift in Sources */,
 				7E8927BF1C1639B20099E69A /* DispatchTests.swift in Sources */,
 				7E8927BB1C1639B20099E69A /* DispatchQueueConstantsTests.swift in Sources */,
 				7E8927BC1C1639B20099E69A /* DispatchQueueTests.swift in Sources */,
