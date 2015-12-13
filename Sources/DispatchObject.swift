@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol DispatchObject {
+public protocol DispatchObject: RawRepresentable {
     typealias RawValue: dispatch_object_t
     var rawValue: RawValue { get }
 }

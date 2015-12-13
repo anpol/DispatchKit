@@ -24,6 +24,10 @@ public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
         self.rawValue = semaphore
     }
 
+    public init(rawValue: RawValue) {
+        self.rawValue = rawValue
+    }
+
     public init!(_ value: Int) {
         assert(0 <= value)
 

@@ -23,6 +23,10 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
         self.rawValue = source
     }
 
+    public init(rawValue: RawValue) {
+        self.rawValue = rawValue
+    }
+
     public init!(_ type: DispatchSourceType, handle: UInt = 0, mask: UInt = 0, queue: DispatchQueue) {
         guard let rawValue = dispatch_source_create(type.toOpaque(), handle, mask, queue.rawValue) else {
             return nil
