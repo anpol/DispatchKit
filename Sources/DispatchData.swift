@@ -39,7 +39,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     public init!(_ array: [T]) {
         let size = Scale.toBytes(array.count)
 
-        guard let rawValue = array.withUnsafeBufferPointer({ (p) in
+        guard let rawValue = array.withUnsafeBufferPointer({ p in
             dispatch_data_create(p.baseAddress, size, nil, nil)
         }) else {
             return nil
