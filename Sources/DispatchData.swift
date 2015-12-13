@@ -135,7 +135,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
 }
 
 
-public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T>? {
+public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T>! {
     guard let rawValue = dispatch_data_create_concat(a.rawValue, b.rawValue) else {
         return nil
     }
