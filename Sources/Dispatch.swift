@@ -14,7 +14,7 @@ public struct Dispatch {
     }
 
     public static var mainQueue: DispatchQueue {
-        return DispatchQueue(raw: dispatch_get_main_queue())
+        return DispatchQueue(rawValue: dispatch_get_main_queue())
     }
 
     public static var globalQueue: DispatchQueue {
@@ -22,7 +22,7 @@ public struct Dispatch {
     }
 
     public static func getGlobalQueue(priority priority: DispatchQueuePriority, flags: Int = 0) -> DispatchQueue {
-        return DispatchQueue(raw: dispatch_get_global_queue(priority.rawValue, UInt(flags)))
+        return DispatchQueue(rawValue: dispatch_get_global_queue(priority.rawValue, UInt(flags)))
     }
 
     public static func getGlobalQueue(qosClass qosClass: DispatchQOSClass, flags: Int = 0) -> DispatchQueue {
@@ -33,7 +33,7 @@ public struct Dispatch {
             identifier = DispatchQueuePriority(qosClass: qosClass).rawValue
         }
 
-        return DispatchQueue(raw: dispatch_get_global_queue(identifier, UInt(flags)))
+        return DispatchQueue(rawValue: dispatch_get_global_queue(identifier, UInt(flags)))
     }
 
 }

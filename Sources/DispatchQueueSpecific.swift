@@ -9,12 +9,12 @@ import Foundation
 
 public extension DispatchQueue {
     public func getSpecific<T: AnyObject>(key: UnsafePointer<Void>) -> T? {
-        let specific = dispatch_queue_get_specific(queue, key)
+        let specific = dispatch_queue_get_specific(rawValue, key)
         return dk_takeUnretained(specific)
     }
 
     public func setSpecific<T: AnyObject>(key: UnsafePointer<Void>, _ specific: T?) {
-        dispatch_queue_set_specific(queue, key, dk_passRetained(specific), dk_release)
+        dispatch_queue_set_specific(rawValue, key, dk_passRetained(specific), dk_release)
     }
 }
 

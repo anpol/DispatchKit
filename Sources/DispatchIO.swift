@@ -9,100 +9,118 @@ import Foundation
 
 public struct DispatchIO: DispatchObject {
 
-    public let io: dispatch_io_t!
-
-    public var rawValue: dispatch_object_t! {
-        return io
+    @available(*, unavailable, renamed="rawValue")
+    public var io: dispatch_io_t {
+        return rawValue
     }
 
-    public init(raw io: dispatch_io_t!) {
-        self.io = io
+    @available(*, unavailable, renamed="DispatchIO(rawValue:)")
+    public init(raw io: dispatch_io_t) {
+        self.rawValue = io
+    }
+
+    public let rawValue: dispatch_io_t
+
+    public init(rawValue: dispatch_io_t) {
+        self.rawValue = rawValue
     }
 
     public typealias CleanupHandler = (error: CInt) -> Void
 
-    public init(_ type: DispatchIOType,
+    public init!(_ type: DispatchIOType,
          fd: dispatch_fd_t,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
-        self.io = dispatch_io_create(type.rawValue, fd, queue?.queue, cleanup)
+        guard let rawValue = dispatch_io_create(type.rawValue, fd, queue?.rawValue, cleanup) else {
+            return nil
+        }
+
+        self.rawValue = rawValue
     }
 
-    public init(_ type: DispatchIOType,
+    public init!(_ type: DispatchIOType,
          path: String, oflag: CInt = O_RDONLY, mode: mode_t = 0o644,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
-        self.io = dispatch_io_create_with_path(type.rawValue, path, oflag, mode, queue?.queue, cleanup)
+        guard let rawValue = dispatch_io_create_with_path(type.rawValue, path, oflag, mode, queue?.rawValue, cleanup) else {
+            return nil
+        }
+
+        self.rawValue = rawValue
     }
 
-    public init(_ type: DispatchIOType,
+    public init!(_ type: DispatchIOType,
          io: DispatchIO,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
 
-        self.io = dispatch_io_create_with_io(type.rawValue, io.io, queue?.queue, cleanup)
+        guard let rawValue = dispatch_io_create_with_io(type.rawValue, io.rawValue, queue?.rawValue, cleanup) else {
+            return nil
+        }
+
+        self.rawValue = rawValue
     }
 
 
     public static func read<T>(fd: dispatch_fd_t, length: Int = Int.max,
-                        queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
+                        queue: DispatchQueue, handler: (DispatchData<T>!, Int) -> Void) {
 
-        dispatch_read(fd, length, queue.queue) {
+        dispatch_read(fd, length, queue.rawValue) {
             (data, error) in
-            handler(DispatchData<T>(raw: data), Int(error))
+            handler(DispatchData<T>(rawValue: data), Int(error))
         }
     }
 
     public static func write<T>(fd: dispatch_fd_t, data: DispatchData<T>,
-                         queue: DispatchQueue, handler: (DispatchData<T>, Int) -> Void) {
+                         queue: DispatchQueue, handler: (DispatchData<T>!, Int) -> Void) {
 
-        dispatch_write(fd, data.data, queue.queue) {
+        dispatch_write(fd, data.rawValue, queue.rawValue) {
             (data, error) in
-            handler(DispatchData<T>(raw: data), Int(error))
+            handler(DispatchData<T>(rawValue: data), Int(error))
         }
     }
 
 
     public func read<T>(offset: off_t = 0, length: Int = Int.max,
-                 queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
+                 queue: DispatchQueue, handler: (Bool, DispatchData<T>!, Int) -> Void) {
 
-        dispatch_io_read(io, offset, length, queue.queue) {
+        dispatch_io_read(rawValue, offset, length, queue.rawValue) {
             (done, data, error) in
-            handler(done, DispatchData<T>(raw: data), Int(error))
+            handler(done, DispatchData<T>(rawValue: data), Int(error))
         }
     }
 
     public func write<T>(offset: off_t = 0, data: DispatchData<T>,
-                  queue: DispatchQueue, handler: (Bool, DispatchData<T>, Int) -> Void) {
+                  queue: DispatchQueue, handler: (Bool, DispatchData<T>!, Int) -> Void) {
 
-        dispatch_io_write(io, offset, data.data, queue.queue) {
+        dispatch_io_write(rawValue, offset, data.rawValue, queue.rawValue) {
             (done, data, error) in
-            handler(done, DispatchData<T>(raw: data), Int(error))
+            handler(done, DispatchData<T>(rawValue: data), Int(error))
         }
     }
 
 
     public func close(flags: DispatchIOCloseFlags = .Unspecified) {
-        dispatch_io_close(io, flags.rawValue)
+        dispatch_io_close(rawValue, flags.rawValue)
     }
 
     public var descriptior: dispatch_fd_t {
-        return dispatch_io_get_descriptor(io)
+        return dispatch_io_get_descriptor(rawValue)
     }
 
     public func setHighWater(highWater: Int) {
-        dispatch_io_set_high_water(io, highWater)
+        dispatch_io_set_high_water(rawValue, highWater)
     }
 
     public func setLowWater(lowWater: Int) {
-        dispatch_io_set_low_water(io, lowWater)
+        dispatch_io_set_low_water(rawValue, lowWater)
     }
 
     public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
-        dispatch_io_set_interval(io, UInt64(interval), flags.rawValue)
+        dispatch_io_set_interval(rawValue, UInt64(interval), flags.rawValue)
     }
-    
+
     public func barrier(block: dispatch_block_t) {
-        dispatch_io_barrier(io, block)
+        dispatch_io_barrier(rawValue, block)
     }
 
 }

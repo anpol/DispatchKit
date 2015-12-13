@@ -7,8 +7,9 @@
 
 import Foundation
 
-public protocol DispatchObject {
-    var rawValue: dispatch_object_t! { get }
+public protocol DispatchObject : RawRepresentable {
+    typealias RawValue: dispatch_object_t
+    var rawValue: RawValue { get }
 }
 
 public protocol DispatchResumable {
