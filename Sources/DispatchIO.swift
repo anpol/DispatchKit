@@ -10,19 +10,19 @@ import Foundation
 public struct DispatchIO: DispatchObject {
 
     public typealias RawValue = dispatch_io_t
-    
+
     @available(*, unavailable, renamed="rawValue")
     public var io: RawValue {
         return rawValue
     }
-    
+
     public let rawValue: RawValue
 
     @available(*, unavailable, renamed="DispatchIO(rawValue:)")
     public init(raw io: RawValue) {
         self.rawValue = io
     }
-    
+
     public init(rawValue: RawValue) {
         self.rawValue = rawValue
     }
@@ -36,14 +36,14 @@ public struct DispatchIO: DispatchObject {
         guard let rawValue = dispatch_io_create(type.rawValue, fd, queue?.rawValue, cleanup) else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 
     public init!(_ type: DispatchIOType,
          path: String, oflag: CInt = O_RDONLY, mode: mode_t = 0o644,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
-        
+
         guard let rawValue = dispatch_io_create_with_path(type.rawValue, path, oflag, mode, queue?.rawValue, cleanup) else {
             return nil
         }
@@ -54,7 +54,7 @@ public struct DispatchIO: DispatchObject {
     public init!(_ type: DispatchIOType,
          io: DispatchIO,
          queue: DispatchQueue? = nil, cleanup: CleanupHandler! = nil) {
-        
+
         guard let rawValue = dispatch_io_create_with_io(type.rawValue, io.rawValue, queue?.rawValue, cleanup) else {
             return nil
         }
@@ -120,7 +120,7 @@ public struct DispatchIO: DispatchObject {
     public func setInterval(interval: Int64, flags: DispatchIOIntervalFlags = .Unspecified) {
         dispatch_io_set_interval(rawValue, UInt64(interval), flags.rawValue)
     }
-    
+
     public func barrier(block: dispatch_block_t) {
         dispatch_io_barrier(rawValue, block)
     }

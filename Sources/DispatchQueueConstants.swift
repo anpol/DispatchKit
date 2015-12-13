@@ -22,7 +22,7 @@ public enum DispatchQueueAttr {
 }
 
 public enum DispatchQOSClass {
-    
+
     case Unspecified
     case UserInteractive
     case UserInitiated
@@ -113,5 +113,5 @@ public enum DispatchQueuePriority {
             return DISPATCH_QUEUE_PRIORITY_BACKGROUND
         }
     }
-    
+
 }

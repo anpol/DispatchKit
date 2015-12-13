@@ -8,9 +8,9 @@
 import Foundation
 
 public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable {
-    
+
     public typealias RawValue = dispatch_group_t
-    
+
     @available(*, unavailable, renamed="rawValue")
     public var group: RawValue {
         return rawValue
@@ -22,7 +22,7 @@ public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable
     public init(raw group: RawValue) {
         self.rawValue = group
     }
-    
+
     public init(rawValue: RawValue) {
         self.rawValue = rawValue
     }
@@ -31,7 +31,7 @@ public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable
         guard let rawValue = dispatch_group_create() else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 

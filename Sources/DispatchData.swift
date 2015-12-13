@@ -8,14 +8,14 @@
 import Foundation
 
 public struct DispatchData<T: IntegerType>: DispatchObject {
-    
+
     public typealias RawValue = dispatch_data_t
     typealias Scale = DispatchDataScale<T>
 
     public static var Empty: DispatchData {
         return DispatchData(rawValue: dispatch_data_empty)
     }
-    
+
     @available(*, unavailable, renamed="rawValue")
     public var data: RawValue {
         return rawValue
@@ -27,7 +27,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     public init(raw data: RawValue) {
         self.rawValue = data
     }
-    
+
     public init(rawValue: RawValue) {
         self.rawValue = rawValue
     }
@@ -39,13 +39,13 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
      */
     public init!(_ array: [T]) {
         let size = Scale.toBytes(array.count)
-        
+
         guard let rawValue = array.withUnsafeBufferPointer({ (p) in
             dispatch_data_create(p.baseAddress, size, nil, nil)
         }) else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 
@@ -58,13 +58,13 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
      */
     public init!(_ buffer: UnsafeMutablePointer<T>, _ count: Int, _ queue: dispatch_queue_t! = nil) {
         let size = Scale.toBytes(count)
-        
+
         guard let rawValue = dispatch_data_create(buffer, size, queue, {
             buffer.dealloc(count)
         }) else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 
@@ -76,7 +76,7 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
         guard let rawValue = dispatch_data_create(buffer, size, queue, destructor) else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 
@@ -87,11 +87,11 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     public subscript(range: Range<Int>) -> DispatchData! {
         let offset = Scale.toBytes(range.startIndex)
         let length = Scale.toBytes(range.endIndex - range.startIndex)
-        
+
         guard let rawValue = dispatch_data_create_subrange(rawValue, offset, length) else {
             return nil
         }
-        
+
         return DispatchData(rawValue: rawValue)
     }
 
@@ -100,11 +100,11 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
 
     public func copyRegion(location: Int) -> Region! {
         var offset: Int = 0
-        
+
         guard let region = dispatch_data_copy_region(rawValue, Scale.toBytes(location), &offset) else {
             return nil
         }
-        
+
         return (DispatchData(rawValue: region), Scale.fromBytes(offset))
     }
 
@@ -114,11 +114,11 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     public func createMap() -> (owner: DispatchData, buffer: Buffer)! {
         var buffer: UnsafePointer<Void> = nil
         var size: Int = 0
-        
+
         guard let owner = dispatch_data_create_map(rawValue, &buffer, &size) else {
             return nil
         }
-        
+
         return (DispatchData(rawValue: owner), (UnsafePointer<T>(buffer), Scale.fromBytes(size)))
     }
 
@@ -140,6 +140,6 @@ public func + <T>(a: DispatchData<T>, b: DispatchData<T>) -> DispatchData<T>? {
     guard let rawValue = dispatch_data_create_concat(a.rawValue, b.rawValue) else {
         return nil
     }
-    
+
     return DispatchData<T>(rawValue: rawValue)
 }

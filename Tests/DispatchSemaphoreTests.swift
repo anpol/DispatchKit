@@ -13,7 +13,7 @@ class DispatchSemaphoreTests: XCTestCase {
     let foo = DispatchSemaphore(1)
 
     func test1() {
-        
+
     }
 
 }

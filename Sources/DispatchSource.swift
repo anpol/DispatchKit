@@ -8,7 +8,7 @@
 import Foundation
 
 public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancelable {
-    
+
     public typealias RawValue = dispatch_source_t
 
     @available(*, unavailable, renamed="rawValue")
@@ -17,7 +17,7 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
     }
 
     public let rawValue: RawValue
-    
+
     @available(*, unavailable, renamed="DispatchSource(rawValue:)")
     public init(raw source: dispatch_source_t!) {
         self.rawValue = source
@@ -27,7 +27,7 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
         guard let rawValue = dispatch_source_create(type.toOpaque(), handle, mask, queue.rawValue) else {
             return nil
         }
-        
+
         self.rawValue = rawValue
     }
 

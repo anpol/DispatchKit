@@ -42,7 +42,7 @@ func cheatQueues() {
     concurrentQueue.apply(42) { i in
         print("item #\(i)")
     }
-    
+
     Dispatch.globalQueue.async {
         // async task
     }

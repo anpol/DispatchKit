@@ -8,9 +8,9 @@
 import Foundation
 
 public struct DispatchQueue : DispatchObject, DispatchResumable {
-    
+
     public typealias RawValue = dispatch_queue_t
-    
+
     @available(*, unavailable, renamed="rawValue")
     public var queue: RawValue {
         return rawValue
@@ -22,7 +22,7 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
     public init(raw queue: RawValue) {
         self.rawValue = queue
     }
-    
+
     public init(rawValue: RawValue) {
         self.rawValue = rawValue
     }
@@ -38,7 +38,7 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
             guard let rawValue = dispatch_queue_create(label, attr.rawValue) else {
                 return nil
             }
-            
+
             self.rawValue = rawValue
         } else if #available(iOS 8.0, *) {
             // iOS 8 and later: apply QOS class
@@ -49,13 +49,13 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
             else {
                 return nil
             }
-            
+
             self.rawValue = rawValue
         } else {
             guard let rawValue = dispatch_queue_create(label, attr.rawValue) else {
                 return nil
             }
-            
+
             self.rawValue = rawValue
 
             // iOS 7 and earlier: simulate QOS class by applying a target queue.
