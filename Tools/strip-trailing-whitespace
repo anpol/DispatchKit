@@ -1,0 +1,30 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Find qw(find);
+
+find sub {
+  if (-d) {
+    $File::Find::prune = 1 if /^\.(git|hg|svn)$/;
+    return;
+  }
+  return unless /\.swift$/;
+
+  my $file = $_;
+  my $changes = 0;
+  {
+    open my $input, "<$file" or die;
+    open my $output, ">$file.new" or die;
+    while (<$input>) {
+      $changes += s/\s+$//;
+      $changes += s/$(?!\n)/\n/;
+      print $output $_;
+    }
+  }
+
+  if (!$changes) {
+    unlink("$file.new");
+  } else {
+    rename("$file.new", "$file");
+  }
+}, ".";
