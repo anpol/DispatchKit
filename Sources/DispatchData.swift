@@ -9,7 +9,6 @@ import Foundation
 
 public struct DispatchData<T: IntegerType>: DispatchObject {
 
-    public typealias RawValue = dispatch_data_t
     typealias Scale = DispatchDataScale<T>
 
     public static var Empty: DispatchData {
@@ -17,18 +16,18 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
     }
 
     @available(*, unavailable, renamed="rawValue")
-    public var data: RawValue {
+    public var data: dispatch_data_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_data_t
 
     @available(*, unavailable, renamed="DispatchData(rawValue:)")
-    public init(raw data: RawValue) {
+    public init(raw data: dispatch_data_t) {
         self.rawValue = data
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_data_t) {
         self.rawValue = rawValue
     }
 

@@ -9,21 +9,19 @@ import Foundation
 
 public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancelable {
 
-    public typealias RawValue = dispatch_source_t
-
     @available(*, unavailable, renamed="rawValue")
-    public var source: RawValue {
+    public var source: dispatch_source_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_source_t
 
     @available(*, unavailable, renamed="DispatchSource(rawValue:)")
     public init(raw source: dispatch_source_t!) {
         self.rawValue = source
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_source_t) {
         self.rawValue = rawValue
     }
 

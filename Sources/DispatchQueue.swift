@@ -9,21 +9,19 @@ import Foundation
 
 public struct DispatchQueue : DispatchObject, DispatchResumable {
 
-    public typealias RawValue = dispatch_queue_t
-
     @available(*, unavailable, renamed="rawValue")
-    public var queue: RawValue {
+    public var queue: dispatch_queue_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_queue_t
 
     @available(*, unavailable, renamed="DispatchQueue(rawValue:)")
-    public init(raw queue: RawValue) {
+    public init(raw queue: dispatch_queue_t) {
         self.rawValue = queue
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_queue_t) {
         self.rawValue = rawValue
     }
 

@@ -9,21 +9,19 @@ import Foundation
 
 public struct DispatchIO: DispatchObject {
 
-    public typealias RawValue = dispatch_io_t
-
     @available(*, unavailable, renamed="rawValue")
-    public var io: RawValue {
+    public var io: dispatch_io_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_io_t
 
     @available(*, unavailable, renamed="DispatchIO(rawValue:)")
-    public init(raw io: RawValue) {
+    public init(raw io: dispatch_io_t) {
         self.rawValue = io
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_io_t) {
         self.rawValue = rawValue
     }
 

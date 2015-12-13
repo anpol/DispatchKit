@@ -9,21 +9,19 @@ import Foundation
 
 public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable {
 
-    public typealias RawValue = dispatch_group_t
-
     @available(*, unavailable, renamed="rawValue")
-    public var group: RawValue {
+    public var group: dispatch_group_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_group_t
 
     @available(*, unavailable, renamed="DispatchGroup(rawValue:)")
-    public init(raw group: RawValue) {
+    public init(raw group: dispatch_group_t) {
         self.rawValue = group
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_group_t) {
         self.rawValue = rawValue
     }
 

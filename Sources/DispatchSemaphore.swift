@@ -9,22 +9,20 @@ import Foundation
 
 public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
 
-    public typealias RawValue = dispatch_semaphore_t
-
     @available(*, unavailable, renamed="rawValue")
-    public var semaphore: RawValue {
+    public var semaphore: dispatch_semaphore_t {
         return rawValue
     }
 
-    public let rawValue: RawValue
+    public let rawValue: dispatch_semaphore_t
 
 
     @available(*, unavailable, renamed="DispatchSemaphore(rawValue:)")
-    public init(raw semaphore: RawValue) {
+    public init(raw semaphore: dispatch_semaphore_t) {
         self.rawValue = semaphore
     }
 
-    public init(rawValue: RawValue) {
+    public init(rawValue: dispatch_semaphore_t) {
         self.rawValue = rawValue
     }
 
