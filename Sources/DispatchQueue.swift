@@ -9,17 +9,25 @@ import Foundation
 
 public struct DispatchQueue : DispatchObject, DispatchResumable {
     
-    public let queue: dispatch_queue_t!
-
-    public var rawValue: dispatch_object_t! {
-        return queue
+    public typealias RawValue = dispatch_queue_t
+    
+    @available(*, unavailable, renamed="rawValue")
+    public var queue: RawValue {
+        return rawValue
     }
 
-    public init(raw queue: dispatch_queue_t!) {
-        self.queue = queue
+    public let rawValue: RawValue
+
+    @available(*, unavailable, renamed="DispatchQueue(rawValue:)")
+    public init(raw queue: RawValue) {
+        self.rawValue = queue
+    }
+    
+    public init(rawValue: RawValue) {
+        self.rawValue = rawValue
     }
 
-    public init(_ label: String! = nil,
+    public init!(_ label: String! = nil,
                 attr: DispatchQueueAttr = .Serial,
                 qosClass: DispatchQOSClass = .Unspecified,
                 relativePriority: Int = 0) {
@@ -27,33 +35,39 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
                "Invalid parameter: relative_priority")
 
         if qosClass == .Unspecified {
-            self.queue = dispatch_queue_create(label, attr.rawValue)
+            guard let rawValue = dispatch_queue_create(label, attr.rawValue) else {
+                return nil
+            }
+            
+            self.rawValue = rawValue
         } else if #available(iOS 8.0, *) {
             // iOS 8 and later: apply QOS class
-            if let qosAttr = dispatch_queue_attr_make_with_qos_class(
-                    attr.rawValue, qosClass.rawClass, Int32(relativePriority)) {
-                self.queue = dispatch_queue_create(label, qosAttr)
-            } else {
-                self.queue = nil
+            guard
+                let qosAttr = dispatch_queue_attr_make_with_qos_class(
+                    attr.rawValue, qosClass.rawClass, Int32(relativePriority)),
+                let rawValue = dispatch_queue_create(label, qosAttr)
+            else {
+                return nil
             }
+            
+            self.rawValue = rawValue
         } else {
-            self.queue = dispatch_queue_create(label, attr.rawValue)
+            guard let rawValue = dispatch_queue_create(label, attr.rawValue) else {
+                return nil
+            }
+            
+            self.rawValue = rawValue
 
             // iOS 7 and earlier: simulate QOS class by applying a target queue.
-            if let queue = self.queue {
-                let priority = DispatchQueuePriority(qosClass: qosClass)
-                let target = dispatch_get_global_queue(priority.rawValue, 0)
-                dispatch_set_target_queue(queue, target)
-            }
+            let priority = DispatchQueuePriority(qosClass: qosClass)
+            let target = dispatch_get_global_queue(priority.rawValue, 0)
+            dispatch_set_target_queue(rawValue, target)
         }
     }
 
     public var clabel: UnsafePointer<CChar> {
-        if queue != nil {
-            // this function never returns NULL, despite its documentation.
-            return dispatch_queue_get_label(queue)
-        }
-        return nil
+        // this function never returns NULL, despite its documentation.
+        return dispatch_queue_get_label(rawValue)
     }
 
     public var label: String {
@@ -77,49 +91,49 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
     // NOTE set to nil to reset target queue to default
     public func setTargetQueue(targetQueue: DispatchQueue?) {
         assert(!isSystemQueue)
-        dispatch_set_target_queue(queue, targetQueue?.queue)
+        dispatch_set_target_queue(rawValue, targetQueue?.rawValue)
     }
 
 
     public func suspend() {
-        dispatch_suspend(queue)
+        dispatch_suspend(rawValue)
     }
 
     public func resume() {
-        dispatch_resume(queue)
+        dispatch_resume(rawValue)
     }
 
 
     public func sync(block: dispatch_block_t) {
-        dispatch_sync(queue, block)
+        dispatch_sync(rawValue, block)
     }
 
     public func barrierSync(block: dispatch_block_t) {
         assert(!isSystemQueue)
-        dispatch_barrier_sync(queue, block)
+        dispatch_barrier_sync(rawValue, block)
     }
 
     public func apply(iterations: Int, block: (Int) -> Void) {
-        dispatch_apply(iterations, queue, { block($0) })
+        dispatch_apply(iterations, rawValue, { block($0) })
     }
 
 
     public func async(block: dispatch_block_t) {
-        dispatch_async(queue, block)
+        dispatch_async(rawValue, block)
     }
 
     public func async(group: DispatchGroup, block: dispatch_block_t) {
-        dispatch_group_async(group.group, queue, block)
+        dispatch_group_async(group.rawValue, rawValue, block)
     }
 
     public func barrierAsync(block: dispatch_block_t) {
         assert(!isSystemQueue)
-        dispatch_barrier_async(queue, block)
+        dispatch_barrier_async(rawValue, block)
     }
 
 
     public func after(when: DispatchTime, block: dispatch_block_t) {
-        dispatch_after(when.rawValue, queue, block)
+        dispatch_after(when.rawValue, rawValue, block)
     }
 
 }

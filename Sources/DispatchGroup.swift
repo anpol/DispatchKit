@@ -8,28 +8,40 @@
 import Foundation
 
 public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable {
-
-    public let group: dispatch_group_t!
-
-    public var rawValue: dispatch_object_t! {
-        return group
+    
+    public typealias RawValue = dispatch_group_t
+    
+    @available(*, unavailable, renamed="rawValue")
+    public var group: RawValue {
+        return rawValue
     }
 
-    public init(raw group: dispatch_group_t!) {
-        self.group = group
+    public let rawValue: RawValue
+
+    @available(*, unavailable, renamed="DispatchGroup(rawValue:)")
+    public init(raw group: RawValue) {
+        self.rawValue = group
+    }
+    
+    public init(rawValue: RawValue) {
+        self.rawValue = rawValue
     }
 
-    public init() {
-        self.group = dispatch_group_create()
+    public init!() {
+        guard let rawValue = dispatch_group_create() else {
+            return nil
+        }
+        
+        self.rawValue = rawValue
     }
 
 
     public func enter() {
-        dispatch_group_enter(group)
+        dispatch_group_enter(rawValue)
     }
 
     public func leave() {
-        dispatch_group_leave(group)
+        dispatch_group_leave(rawValue)
     }
 
 
@@ -39,11 +51,11 @@ public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable
     }
 
     public func wait(timeout: DispatchTime) -> Int {
-        return dispatch_group_wait(group, timeout.rawValue)
+        return dispatch_group_wait(rawValue, timeout.rawValue)
     }
 
     public func notify(queue: DispatchQueue, block: dispatch_block_t) {
-        dispatch_group_notify(group, queue.queue, block)
+        dispatch_group_notify(rawValue, queue.rawValue, block)
     }
 
 
