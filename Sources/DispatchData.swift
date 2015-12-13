@@ -20,12 +20,12 @@ public struct DispatchData<T: IntegerType>: DispatchObject {
         return rawValue
     }
 
-    public let rawValue: dispatch_data_t
-
     @available(*, unavailable, renamed="DispatchData(rawValue:)")
     public init(raw data: dispatch_data_t) {
         self.rawValue = data
     }
+
+    public let rawValue: dispatch_data_t
 
     public init(rawValue: dispatch_data_t) {
         self.rawValue = rawValue

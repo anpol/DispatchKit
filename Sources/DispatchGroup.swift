@@ -14,12 +14,12 @@ public struct DispatchGroup: DispatchObject, DispatchEnterable, DispatchWaitable
         return rawValue
     }
 
-    public let rawValue: dispatch_group_t
-
     @available(*, unavailable, renamed="DispatchGroup(rawValue:)")
     public init(raw group: dispatch_group_t) {
         self.rawValue = group
     }
+
+    public let rawValue: dispatch_group_t
 
     public init(rawValue: dispatch_group_t) {
         self.rawValue = rawValue

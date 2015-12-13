@@ -14,12 +14,12 @@ public struct DispatchQueue : DispatchObject, DispatchResumable {
         return rawValue
     }
 
-    public let rawValue: dispatch_queue_t
-
     @available(*, unavailable, renamed="DispatchQueue(rawValue:)")
     public init(raw queue: dispatch_queue_t) {
         self.rawValue = queue
     }
+
+    public let rawValue: dispatch_queue_t
 
     public init(rawValue: dispatch_queue_t) {
         self.rawValue = rawValue

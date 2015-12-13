@@ -14,12 +14,12 @@ public struct DispatchSource: DispatchObject, DispatchResumable, DispatchCancela
         return rawValue
     }
 
-    public let rawValue: dispatch_source_t
-
     @available(*, unavailable, renamed="DispatchSource(rawValue:)")
     public init(raw source: dispatch_source_t!) {
         self.rawValue = source
     }
+
+    public let rawValue: dispatch_source_t
 
     public init(rawValue: dispatch_source_t) {
         self.rawValue = rawValue

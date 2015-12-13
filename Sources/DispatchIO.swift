@@ -14,12 +14,12 @@ public struct DispatchIO: DispatchObject {
         return rawValue
     }
 
-    public let rawValue: dispatch_io_t
-
     @available(*, unavailable, renamed="DispatchIO(rawValue:)")
     public init(raw io: dispatch_io_t) {
         self.rawValue = io
     }
+
+    public let rawValue: dispatch_io_t
 
     public init(rawValue: dispatch_io_t) {
         self.rawValue = rawValue

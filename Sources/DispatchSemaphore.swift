@@ -14,13 +14,12 @@ public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
         return rawValue
     }
 
-    public let rawValue: dispatch_semaphore_t
-
-
     @available(*, unavailable, renamed="DispatchSemaphore(rawValue:)")
     public init(raw semaphore: dispatch_semaphore_t) {
         self.rawValue = semaphore
     }
+
+    public let rawValue: dispatch_semaphore_t
 
     public init(rawValue: dispatch_semaphore_t) {
         self.rawValue = rawValue
