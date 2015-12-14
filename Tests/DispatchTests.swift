@@ -11,12 +11,12 @@ import XCTest
 class DispatchTests: XCTestCase {
 
     func testMainQueue() {
-        XCTAssert(dispatch_get_main_queue() === Dispatch.mainQueue.queue)
+        XCTAssert(dispatch_get_main_queue() === Dispatch.mainQueue.rawValue)
     }
 
     func testGlobalQueue() {
         XCTAssert(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) ===
-            Dispatch.globalQueue.queue)
+            Dispatch.globalQueue.rawValue)
     }
 
 }

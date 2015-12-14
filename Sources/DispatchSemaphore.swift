@@ -9,19 +9,30 @@ import Foundation
 
 public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
 
-    public let semaphore: dispatch_semaphore_t!
-
-    public var rawValue: dispatch_object_t! {
-        return semaphore
+    @available(*, unavailable, renamed="rawValue")
+    public var semaphore: dispatch_semaphore_t {
+        return rawValue
     }
 
-    public init(raw semaphore: dispatch_semaphore_t!) {
-        self.semaphore = semaphore
+    @available(*, unavailable, renamed="DispatchSemaphore(rawValue:)")
+    public init(raw semaphore: dispatch_semaphore_t) {
+        self.rawValue = semaphore
     }
 
-    public init(_ value: Int) {
+    public let rawValue: dispatch_semaphore_t
+
+    public init(rawValue: dispatch_semaphore_t) {
+        self.rawValue = rawValue
+    }
+
+    public init!(_ value: Int) {
         assert(0 <= value)
-        self.semaphore = dispatch_semaphore_create(value)
+
+        guard let rawValue = dispatch_semaphore_create(value) else {
+            return nil
+        }
+
+        self.rawValue = rawValue
     }
 
 
@@ -31,11 +42,11 @@ public struct DispatchSemaphore: DispatchObject, DispatchWaitable {
     }
 
     public func wait(timeout: DispatchTime) -> Int {
-        return dispatch_semaphore_wait(semaphore, timeout.rawValue)
+        return dispatch_semaphore_wait(rawValue, timeout.rawValue)
     }
 
     public func signal() -> Int {
-        return dispatch_semaphore_signal(semaphore)
+        return dispatch_semaphore_signal(rawValue)
     }
 
 }
