@@ -3,8 +3,12 @@
 =======================================================
 
 .. vim:spell:spelllang=en
-.. contents::
 
+**This project is abandoned:** Starting from Swift 3, Apple provides its own `Dispatch Framework`_.
+
+.. _Dispatch Framework: https://developer.apple.com/documentation/dispatch
+
+.. contents::
 
 Goal
 ====
